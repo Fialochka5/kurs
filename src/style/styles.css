@@ -10,8 +10,11 @@ body {
 img {
 	max-width: 100%;
 } 
+
+
 	/* Шапка position: sticky */
 .navbar {
+	
 	position: sticky;
 	z-index: 100;
 	top: 0;
@@ -68,6 +71,7 @@ img {
 }
 
 .navbar-menu li a:hover {
+	background-color: inherit;
 	opacity: 1;
 	
 }
@@ -76,14 +80,15 @@ img {
 	padding-right: 20px;
 }
 
-
+.number li a:hover {
+	background-color: inherit;
+}
 .number {
 	font-size: 14px;
 	justify-self: start;
 	align-self: center;
 	
 }
-
 
 .number li {
 	display: block;

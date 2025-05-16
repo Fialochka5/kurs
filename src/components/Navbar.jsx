@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import M from "materialize-css";
 
+
 const Navbar = () => {
   useEffect(() => {
   M.Sidenav.init(document.querySelectorAll(".sidenav"));
