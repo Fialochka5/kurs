@@ -2152,7 +2152,7 @@ html {
   /* 1 */
   -ms-text-size-adjust: 100%;
   /* 2 */
-  -webkit-text-size-adjust: 100%; /* Для Safari и iOS */
+   -webkit-text-size-adjust: 100%; /* Для Safari */
   text-size-adjust: 100%; /* Для остальных браузеров */
   /* 2 */
 }
@@ -2241,7 +2241,7 @@ pre {
 a {
   background-color: transparent;
   /* 1 */
-  -webkit-text-decoration-skip: objects;
+  text-decoration-skip-ink: auto; /* Современный вариант */
   /* 2 */
 }
 
@@ -2413,7 +2413,9 @@ button,
 html [type="button"],
 [type="reset"],
 [type="submit"] {
-  -webkit-appearance: button;
+  -webkit-appearance: none; /* Для Safari и Chrome */
+  -moz-appearance: none; /* Для Firefox */
+  appearance: none; /* Стандартное свойство */
   /* 2 */
 }
 
@@ -2511,7 +2513,9 @@ textarea {
  * 2. Correct the outline style in Safari.
  */
 [type="search"] {
-  -webkit-appearance: textfield;
+  -webkit-appearance: none; /* Для Safari и Chrome */
+  -moz-appearance: none; /* Для Firefox */
+  appearance: none; /* Стандартное свойство */
   /* 1 */
   outline-offset: -2px;
   /* 2 */
@@ -2789,7 +2793,6 @@ video.responsive-video {
 .breadcrumb [class^="mdi-"], .breadcrumb [class*="mdi-"],
 .breadcrumb i.material-icons {
   display: inline-block;
-  float: left;
   font-size: 24px;
 }
 
@@ -6052,7 +6055,8 @@ body.keyboard-focused .dropdown-content li:focus {
   position: relative;
   -webkit-transition: opacity .4s;
   transition: opacity .4s;
-  -webkit-backface-visibility: hidden;
+   -webkit-backface-visibility: hidden; /* Для Safari и Chrome */
+  backface-visibility: hidden; /* Стандартное свойство */
 }
 
 .materialboxed:hover:not(.active) {
@@ -6850,10 +6854,6 @@ textarea.materialize-textarea {
   pointer-events: none;
 }
 
-[type="checkbox"] {
-  /* checkbox aspect */
-}
-
 [type="checkbox"] + span:not(.lever) {
   position: relative;
   padding-left: 35px;
@@ -7396,7 +7396,9 @@ input[type=range] + .thumb.active .value {
 }
 
 input[type=range] {
-  -webkit-appearance: none;
+  -webkit-appearance: none; /* Для Safari и Chrome */
+  -moz-appearance: none; /* Для Firefox */
+  appearance: none; 
 }
 
 input[type=range]::-webkit-slider-runnable-track {
@@ -7541,8 +7543,8 @@ input[type=range]::-ms-thumb {
   -webkit-transform: translateX(-100%);
           transform: translateX(-100%);
   height: 100%;
-  height: calc(100% + 60px);
-  height: -moz-calc(100%);
+  height: -moz-calc(100% + 60px); /* Для Firefox */
+  height: calc(100% + 60px); /* Для остальных браузеров */
   padding-bottom: 60px;
   background-color: #fff;
   z-index: 999;

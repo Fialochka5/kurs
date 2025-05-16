@@ -37,11 +37,11 @@ const Navbar = () => {
           <ul>
             <li>
               <a href=" ">
-                +375 44 585-77-77 <img src="./images/viber.png" alt="" className="viber" />
+                +375 44 585-77-77 
               </a>
             </li>
             <li>
-              <a href=" ">+375 29 805-77-77</a>
+              <a href=" ">+375 29 805-77-77 <img src="/images/viber.png" alt="" className="viber" /></a>
             </li>
           </ul>
         </div>
