@@ -1,0 +1,19 @@
+
+.footer {
+
+	background-color: #003655;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+} 
+
+.footer .item {
+	font-size: small;
+	color: white;
+	justify-self: center;
+	align-self: center;
+	padding: 3%;
+}
+
+.sidenav-trigger {
+	display: none;
+}

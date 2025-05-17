@@ -1,0 +1,91 @@
+
+/* Основное модальное окно */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.4s ease-in-out;
+}
+
+.modal-overlay.show {
+  opacity: 1;
+}
+
+/* Контент модального окна */
+.modal-content {
+  background: white;
+  padding: 20px;
+  width: 50%;
+  max-width: 600px;
+  border-radius: 10px;
+  position: relative;
+  text-align: center;
+  transform: translateY(30px);
+  transition: transform 0.4s ease-out, opacity 0.4s ease-out;
+  opacity: 0;
+}
+
+.modal-content.slide-up {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* Кнопка закрытия */
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+/* ✅ Адаптация под **мобильные экраны** */
+@media screen and (max-width: 768px) {
+  .modal-content {
+    width: 80%;
+    padding: 15px;
+  }
+
+  .contact-form input,
+  .contact-form textarea {
+    font-size: 14px;
+  }
+
+  .info-item {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .info-item i {
+    font-size: 1.8rem;
+    margin-bottom: 5px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .modal-content {
+    width: 90%;
+    padding: 10px;
+  }
+
+  .modal-content h2 {
+    font-size: 18px;
+  }
+
+  .contact-form input,
+  .contact-form textarea {
+    font-size: 12px;
+  }
+
+  .info-item i {
+    font-size: 1.6rem;
+  }
+}
+

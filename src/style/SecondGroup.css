@@ -1,0 +1,45 @@
+/* Секция преимуществ */
+.advantages-section {
+  text-align: center;
+  width: 100%;
+  color: #003655;
+  font-size: 3vw;
+  font-weight: 700;
+  margin-bottom: 3%;
+  margin-top: -11%;
+}
+
+/* Контейнер с пунктами */
+.eight-points {
+  position: relative;
+  left: 20%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  width: 70%;
+  margin-bottom: 5%;
+}
+
+/* Общий стиль элемента */
+.advantage-item {
+  display: flex;
+  padding: 10px;
+}
+
+/* Описание */
+.under-word {
+  color: #000;
+  font-size: .8vw;
+} 
+
+.advantage-item p {
+  margin-bottom: 1%;
+  color: #003655;
+  font-size: .9vw;
+}
+
+/* Иконки */
+.advantage-item .material-icons {
+  color: #000;
+  font-size: 4vw;
+  padding: 5px;
+}

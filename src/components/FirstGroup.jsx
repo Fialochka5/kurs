@@ -1,7 +1,10 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import M from "materialize-css";
+import ContactModal from "../Visual/Contacts"; // Импорт модального окна
 
 const FirstGroup = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
   useEffect(() => {
   M.Sidenav.init(document.querySelectorAll(".sidenav"));
 }, []);
@@ -19,9 +22,9 @@ const FirstGroup = () => {
         <p className="central-text" id="shadow">
           Всем новым Арендаторам — наши золотые фирменные скрепки — в подарок!
         </p>
-        <p className="button-text">
-          <a href=" ">Получить предложение</a>
-        </p>
+       <button onClick={() => setIsOpen(true)} className="button-text">
+  Получить предложение
+</button>
       </div>
 
       <div className="item_bur">
@@ -47,9 +50,9 @@ const FirstGroup = () => {
             Организация офиса Вашей компании в Бизнес-центре <br />
             «БРЕСТ ДЕЛОВОЙ» (класс В+)
           </p>
-          <p className="button-text">
-            <a href=" ">Получить предложение</a>
-          </p>
+         <button onClick={() => setIsOpen(true)} className="button-text">
+  Получить предложение
+</button>
         </div>
         <div className="piece">
           <img src="images/delovoy.webp" alt="Brest Delovoy" />
@@ -66,9 +69,9 @@ const FirstGroup = () => {
           <p className="central-text">
             Организация торгового представительства Вашей<br /> компании в Офис-центре «DOMUS CITY» (класс В)
           </p>
-          <p className="button-text">
-            <a href=" ">Получить предложение</a>
-          </p>
+          <button onClick={() => setIsOpen(true)} className="button-text">
+  Получить предложение
+</button>
         </div>
       </div>
       
@@ -79,14 +82,15 @@ const FirstGroup = () => {
           <p className="central-text">
             Организация торгового представительства Вашей<br /> компании в Офис-центре «DOMUS CITY» (класс В)
           </p>
-          <p className="button-text">
-            <a href=" ">Получить предложение</a>
-          </p>
+          <button onClick={() => setIsOpen(true)} className="button-text">
+      Получить предложение
+      </button>
         </div>
         <div className="piece">
           <img src="images/domus-city.webp" alt="Domus City" />
         </div>
       </div>
+      {isOpen && <ContactModal setIsOpen={setIsOpen} />}
     </div>
   );
 };
