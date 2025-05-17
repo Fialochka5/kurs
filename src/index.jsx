@@ -11,11 +11,11 @@ import FirstGroup from "./components/FirstGroup";
 
 const App = () => <Navbar />;
 
-const root_1 = createRoot(document.getElementById("root")); // ✅ Создаём root
-root_1.render(<App />); // ✅ Рендерим приложение
+const root_1 = createRoot(document.getElementById("root")); 
+root_1.render(<App />); 
 
 const Group = () => <FirstGroup />;
 
-const root_2 = createRoot(document.getElementById("app")); // ✅ Создаём root
+const root_2 = createRoot(document.getElementById("app")); 
 root_2.render(<Group />);
 
