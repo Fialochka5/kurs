@@ -11,9 +11,9 @@ const Navbar = () => {
     <>
       <nav className="navbar">
         <div className="image">
-          <a href=" ">
+         
           <img src="/images/nametest.png" alt="Logo" />
-          </a>
+         
         </div>
         <a href=" " data-target="slide-out" className="sidenav-trigger">
           <i className="material-icons">menu</i>
@@ -21,28 +21,28 @@ const Navbar = () => {
         <div className="navbar-menu">
           <ul>
             <li className="padding">
-              <a href=" ">О нас</a>
+             О нас
             </li>
             <li className="padding">
-              <a href=" ">Галерея</a>
+              Галерея
             </li>
             <li className="padding">
-              <a href=" ">Аренда</a>
+              Аренда
             </li>
             <li>
-              <a href=" ">Контакты</a>
+              Контакты
             </li>
           </ul>
         </div>
         <div className="number">
           <ul>
             <li>
-              <a href=" ">
+             
                 +375 44 585-77-77 
-              </a>
+              
             </li>
             <li>
-              <a href=" ">+375 29 805-77-77 <img src="/images/viber.png" alt="" className="viber" /></a>
+              +375 29 805-77-77 <img src="/images/viber.png" alt="" className="viber" />
             </li>
           </ul>
         </div>

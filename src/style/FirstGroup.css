@@ -1,0 +1,221 @@
+/* Площадки для бизнеса + "получить предложение" до 8 элементов*/
+.first-group {
+	position: relative;
+	left: 50%;
+	width: 100%;
+	height: 100%;
+	transform: translate(-50%, -10%);
+	padding-bottom: 0;
+}
+
+.first-group .picture-mb {
+	display: none;
+	filter: brightness(.9);
+	width: 100%;
+}
+
+.first-group .picture{
+	filter: brightness(.9);
+	width: 100%;
+	position: relative;
+}
+.first-group .picture img {
+	width: 100%;
+}
+.first-group .content {
+	position: absolute;
+	top: 16%;
+	left:22%;
+}
+
+#shadow {
+	text-shadow: 1px 10px 50px rgb(0, 0, 0);
+}
+
+.first-group .content .button-text {
+	width: 30%;
+	text-align: center;
+	margin-top: 7%;
+	margin-left: 35%;
+	padding: 2%;
+	background-color: #008DE2;
+	border-radius: 100px;
+	font-size: 1vw;
+	transition: all .1s ease-in-out;
+}
+
+.first-group .content .button-text:hover{
+	transform: scale(1.04);
+}
+
+.first-group .content .button-text a {
+	text-decoration: none;
+	color: white;
+}
+
+.first-group .content .name {
+	text-align: center;
+	color: white;
+	font-size: 4.5vw;
+	font-weight: 1000;
+	margin-top: 0;
+	margin-bottom: 1%;
+}
+
+.first-group .content .title {
+	text-align: center;
+	margin-left: 1%;
+	color: white;
+	margin-bottom: 0;
+	font-size: 1.9vw;
+	font-weight: 10;
+}
+
+.first-group .content .central-text {
+	text-align: center;
+	color: white;
+	font-size: 1vw;
+}
+
+.first-group .item_bur {
+	position: absolute;
+	z-index: 5;
+	top: 46%;
+	left: 50%;
+	transform: translate(-50%, 0);
+	width: 80%;
+	height: 7%;
+	background-color: white;
+	border-radius: 6px;
+	box-shadow: 0 5px 10px  rgba(127, 127, 127, 0.5);
+
+	display: grid; 
+	grid-template-columns: repeat(5 , 1fr);
+    justify-content: space-between;
+	padding-top: 1%;
+	padding-left: 5%;
+	padding-right: 5%;
+}
+
+.first-group .item_bur .item {
+	text-align: center;
+	align-self: start;
+}
+
+.first-group .item_bur .material-icons {
+	color: #000;
+	font-size: 4vw;
+	padding: 5px;
+}
+
+.first-group .item_bur .item p{
+	color: #333333;
+	font-size: .8vw;
+	font-weight: 100;
+}
+
+.domus-city-up {
+	background-color: #f0f0f0;
+	margin-top: 4%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    row-gap: 0;
+    column-gap: 0;
+	position: relative;
+	width: 100%;
+}
+
+.domus-city-down {
+	background-color: #f0f0f0;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+    row-gap: 0;
+    column-gap: 0;
+	position: relative;
+	width: 100%;
+}
+
+.domus-city-down-mb {
+	background-color: #f0f0f0;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+    row-gap: 0;
+    column-gap: 0;
+	position: relative;
+	width: 100%;
+
+	display: none;
+}
+
+.domus-city-up .piece .button-text {
+	text-align: center;
+	margin-left: 0;
+	margin-right: 50%;
+	padding: 2%;
+	background-color: #008DE2;
+	border-radius: 100px;
+	color: white;
+	font-size: 1vw;
+	transition: all .1s ease-in-out;
+}
+
+.domus-city-down .piece .button-text, .domus-city-down-mb .piece .button-text {
+	text-align: center;
+	margin-left: 0;
+	margin-right: 45%;
+	text-align: center;
+	padding-top: 2.5%;
+	padding-bottom: 2.5%;
+	padding-left: 3%;
+	padding-right: 3%;
+	background-color: #008DE2;
+	border-radius: 100px;
+	color: white;
+	font-size: 1vw;
+	transition: all .1s ease-in-out;
+}
+
+.piece .button-text:hover{
+	transform: scale(1.04);
+}
+
+.piece .button-text a {
+	text-decoration: none;
+	color: white;
+}
+
+.piece .name {
+	color: #003655;
+	font-size: 3vw;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 1%;
+}
+
+.piece .title {
+	margin-bottom: 0;
+	font-size: 1.8vw;
+	font-weight: 100;
+}
+
+.piece .central-text {
+	font-size: 1vw;
+}
+
+.domus-city-up .piece:first-child {
+	margin-right: 10%;
+	justify-self: end;
+	align-self: center;
+}
+
+.domus-city-down .piece:last-child {
+	margin-left: 10%;
+	justify-self: start;
+	align-self: center;
+}
+
+.domus-city-down-mb .piece:first-child {
+	margin-left: 10%;
+	justify-self: start;
+	align-self: center;
+}

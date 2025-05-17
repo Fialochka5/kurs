@@ -1,0 +1,12 @@
+
+body {
+	position: relative;
+	font-family: 'Noto Sans', sans-serif;
+	line-height: 1.4;
+	color: #000;
+	min-width: 320px;
+}
+
+img {
+	max-width: 100%;
+} 

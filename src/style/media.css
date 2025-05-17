@@ -1,0 +1,528 @@
+@media screen and (max-width: 800px) {
+
+		.navbar .image {
+			justify-self: center;
+			width: 60%;
+		}
+
+		.navbar .navbar-menu li a {
+			font-size: 10px;
+		}
+		
+		.navbar .number {
+			justify-self: center;
+		}
+
+		.navbar .number li a {
+			font-size: 12px;
+		}
+
+		.viber {
+			height: 20px;
+		}
+
+		.first-group .content {
+			left: 15%;
+			width: 70%;
+		}
+
+		.first-group .content .title {
+			font-size: 2.5vw;
+		}
+		.first-group .content .name {
+			font-size: 5vw;
+		}
+
+		.first-group .content .central-text {
+			font-size: 1.5vw;
+		}
+
+		.first-group .content .button-text {
+			font-size: 1.5vw;
+		}
+
+		.first-group .item_bur {
+			top: 44.5%;
+			height: 10%;
+		}
+
+		.first-group .item_bur .item {
+			align-self: center;
+		}
+
+		.first-group .item_bur .material-icons {
+			color: #000;
+			font-size: 5vw;
+			padding: 5px;
+		}
+		
+		.first-group .item_bur .item p{
+			font-size: 1vw;
+		}
+
+		.domus-city-up {
+			margin-top: 6%;
+		}
+
+		.domus-city-up .piece .button-text, .domus-city-down .piece .button-text {
+			font-size: 1.5vw;
+			width: 80%;
+		}
+		
+		.domus-city-up .piece .name, .domus-city-down .piece .name{
+			font-size: 3.5vw;
+		}
+
+		.domus-city-up .piece .title, .domus-city-down .piece .title{
+			font-size: 2vw;
+		}
+
+		.domus-city-up .piece .central-text, .domus-city-down .piece .central-text{
+			font-size: 1.4vw;
+		}
+
+		.domus-city-down .piece:last-child {
+			justify-self: center;
+		}
+
+		.eight-points {
+			width: 75%;
+			left: 15%;
+		}
+		
+		.eight-points .under-word{
+			color: #000;
+			font-size: 1.3vw;
+		} 
+		.eight-points p {
+			font-size: 1.4vw;
+		}
+		
+
+		.eight-points .material-icons {
+			font-size: 5vw;
+		}
+
+		.rent .footer-text {
+			font-size: 1.5vw;
+			margin-left: 25%;
+			margin-right: 25%;
+			padding: 2%;
+		}
+
+		.image-row .item h3 {
+			font-size: large;
+		}
+
+		.company-info .left .start-text {
+			font-size: 1.1vw;
+		}
+
+		.company-info .left .center-text {
+			font-size: 1.3vw;
+		}
+
+		.company-info .houses .item img {
+			width:30%;
+		}
+
+		.company-info .houses .item {
+			font-size: 1vw;
+		}
+
+		.company-info .right img {
+			width: auto;
+			height: 24vw;
+		}
+
+		.pyramid-down {
+			grid-template-columns: repeat(auto-fit, minmax(130px, 1fr ));
+		}
+
+		.top-row .image-item .material-icons {
+			font-size: 5vw;   
+		}
+
+		.bottom-row .text-item, .top-row .image-item {
+			font-size: 1.3vw;
+		}
+
+		.footer .item {
+			font-size: 1.5vw;
+		}
+} 
+
+@media screen and (max-width: 780px) {
+	.image-row .item:nth-child(1) h2 {
+		margin-top: 16%;
+	}
+}
+
+@media screen and (max-width: 670px) {
+	.navbar-menu .padding {
+		padding-right: 7px;
+	}
+}
+
+@media screen and (max-width: 550px) {
+	.navbar {
+		grid-template-rows: 55px;
+	}
+
+	.navbar-menu {
+		display: none;
+	}
+
+	.number {
+		display: none;
+	}
+
+	.sidenav-trigger {
+		background-color:#FFFFFF99;
+		padding-left: 2%;
+		padding-right: 2%;
+		border-radius: 50%;
+		display: block;
+		justify-self: center;
+		align-self: center;
+	}
+
+	.sidenav-trigger .material-icons {
+		padding-top: 10%;
+	}
+
+	.navbar {
+		grid-template-columns: 2fr 1fr;
+	}
+	.navbar .image {
+		justify-self: center;
+		width: 60%;
+	}
+
+	.first-group .picture-mb {
+		display: block;
+		width: 100%;
+		height: 200vw;
+	}
+
+	.first-group .picture-mb img {
+		object-fit: cover;
+		height: 100%;
+	}
+
+	.first-group .picture {
+		display: none;
+	}
+
+	.first-group .content {
+		top: 11.5%;
+		left: 5%;
+		width: 90%;
+	}
+
+	.first-group .content .title {
+		font-size: 4.5vw;
+	}
+	.first-group .content .name {
+		font-size: 11.5vw;
+	}
+
+	.first-group .content .central-text {
+		font-size: 3.5vw;
+	}
+
+	.first-group .content .button-text {
+		font-size: 3.5vw;
+		margin-left: 10%;
+		width: 80%;
+		padding: 4%;
+	}
+
+	.first-group .item_bur {	
+		width: 90%;
+		height: 20.5%;
+		grid-template-columns: repeat(2 , 1fr);
+		grid-template-rows: repeat(3, 1fr) ;
+		top: 32.5%;
+	}
+
+	.first-group .item_bur .item:nth-child(5){
+		grid-column: span 2;
+	}
+
+	.first-group .item_bur .material-icons {
+		font-size: 15vw;
+	}
+	
+	.first-group .item_bur .item p{
+		font-size: 3vw;
+	}
+
+	.domus-city-up {
+		margin-top: 100%;
+		grid-template-columns: 1fr;
+		grid-template-rows: 1fr 1fr ;
+	}
+
+	.domus-city-up .piece:first-child {
+		margin-right: 0;
+		justify-self: center;
+		
+	}
+
+	.domus-city-up .piece .name, .domus-city-down-mb .piece .name{
+		font-size: 9vw;
+	}
+
+	.domus-city-up .piece .title, .domus-city-down-mb .piece .title{
+		font-size: 6vw;
+	}
+
+	.domus-city-up .piece .central-text, .domus-city-down-mb .piece .central-text{
+		font-size: 3vw;
+	}
+
+	.domus-city-up .piece .button-text, .domus-city-down-mb .piece .button-text {
+		font-size: 3vw;
+		width: 60%;
+	}
+
+	.domus-city-down {
+		display: none;
+	}
+
+	.domus-city-down-mb {
+		display: block;
+		grid-template-columns: 1fr;
+		grid-template-rows: 1fr 1fr ;
+	}
+
+	.domus-city-down-mb .piece:nth-child(1){
+		padding: 10% 0 10% 0;
+	}
+	
+	.advantages {
+		font-size: 8vw;
+		margin-top: -50%;
+	}
+
+	.eight-points {
+		grid-template-columns: repeat(1, 1fr); 
+		width: 100%;
+		margin-bottom: 5%;
+		left: 0;
+	}
+
+	.eight-points .under-word{
+		font-size: 3vw;
+	} 
+	.eight-points p {
+		font-size: 4vw;
+	}
+	
+	.eight-points .material-icons {
+		font-size: 20vw;
+	}
+
+	.eight-points .item-left, .eight-points .item-right {
+		width: 100%;
+		padding-left: 10%;
+		padding-right: 0;
+	}
+
+	.photo {
+		display: block;
+		width: 100%;
+		height: 130vw;
+	}
+
+	.photo img {
+		object-fit: cover;
+		height: 100%;
+	}
+	
+	.office {
+		margin-left: 5%;
+		font-size: 8vw;
+		width: 90%;
+	}
+
+	.matrix {
+		grid-gap: 10px;
+		position: relative;
+		left: 5%;
+		width: 90%;
+		display: grid;
+		grid-template-columns: repeat(1, 1fr);
+	}
+	
+	.matrix img:nth-child(5), .matrix img:nth-child(6) {
+		display: none;
+	}
+
+	.matrix .video-1 {
+		display: none;
+	}
+
+	.matrix .video-2 {
+		display: none;
+	}
+
+	.text {
+		width: 90%;
+		left: 5%;
+		margin-top: 4%;
+	}
+
+	.rent {
+		width: 100%;
+		left: 0;
+	}
+
+	.rent .title {
+		font-size: 7.5vw;
+	}
+
+	.image-row {
+		display: block;
+	}
+
+	.image-row .item {
+		margin: 0; 
+	}
+
+	.image-row .item:nth-child(1) h2 {
+		margin-top: 0;
+	}
+
+	.image-row .item h2 {
+		margin-top: 3%;
+		font-size: 6vw;
+	}
+		
+	.image-row .item h3 {
+		font-size: 5vw;
+	}
+	
+	.rent .footer-text {
+		margin-left: 15%;
+		margin-right: 0;
+		padding: 3.5% 0 3.5% 0;
+		width: 70%;
+		font-size:3vw;
+		
+	}
+
+	.company {
+		width: 90%;
+		font-size: 8vw;
+		margin-left: 5%;
+	}
+
+	.company-info {
+		display: none;
+	}
+
+	.company-info-mb {
+		display: block;
+		position: relative;
+		left: 5%;
+		width: 90%;
+	}
+
+	.company-info-mb p{
+		margin-top: 3%;
+	}
+
+	.pyramid-up {
+		display: none;
+	}
+
+	.pyramid-down {
+		display: none;
+	}
+
+	.pyramid-mb {
+		grid-gap: 10px;
+		position: relative;
+		left: 5%;
+		width: 90%;
+		display: grid;
+		grid-template-columns: repeat(1, 1fr);
+	}
+
+	.contacts {
+		margin-left: 5%;
+		font-size: 8vw;
+		width: 90%;
+	}
+
+	.footer {
+		grid-template-columns: 1fr;
+	}
+
+	.map {
+		display: block;
+		width: 100%;
+		height: 100vw;
+	}
+
+	.map img {
+		object-fit: cover;
+		height: 100%;
+	}
+	
+	.footer .item {
+		justify-self: start;
+		font-size: 2vw;
+		padding: 2%;
+	}
+
+	.footer .item:first-child {
+		padding-bottom: 0;
+	}
+
+	.contact-info {
+		left: 15%;
+		width: 80%;
+	}
+
+	.contact-info .top-row {
+		display: block;
+	}
+
+
+	.contact-info .top-row .image-item p{
+		font-size: 3vw;
+	}
+
+	.contact-info .top-row .image-item .material-icons {
+		font-size: 20vw;
+	}
+
+	.contact-info .bottom-row .text-item:nth-child(1) {
+		font-size: 3vw;
+	}
+
+	.contact-info .bottom-row .text-item:nth-child(1) p {
+		margin-bottom: 2%;
+		padding-left: 35%;
+	}
+
+	.contact-info .bottom-row .text-item:nth-child(2) {
+		font-size: 3vw;
+	}
+
+	.contact-info .bottom-row .text-item:nth-child(2) p {
+		padding-left: 35%;
+	}
+
+	.contact-info .bottom-row .text-item:nth-child(3) {
+		display: none;
+	}
+
+	.contact-info .bottom-row {
+		display: block;
+	}
+
+}
