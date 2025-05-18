@@ -1,15 +1,51 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef  } from "react";
+import emailjs from "@emailjs/browser";
 
 const ContactModal = ({ setIsOpen }) => {
   const [isVisible, setIsVisible] = useState(false);
   const [modalTop, setModalTop] = useState(0);
+  const form = useRef();
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+
+    emailjs.sendForm(
+      "service_fv957xt", // ID сервиса
+      "service_ugocd5r", // ID шаблона
+      form.current,
+      "NZ2yqZjhuAZlMhekj" // Публичный ключ
+    )
+    .then((result) => {
+      console.log("Сообщение отправлено!", result.text);
+      alert("Ваше сообщение успешно отправлено!");
+    }, (error) => {
+      console.error("Ошибка отправки:", error.text);
+      alert("Ошибка при отправке сообщения.");
+    });
+  };
+  const sentEmail = (e) => {
+    e.preventDefault();
+
+    emailjs.sendForm(
+      "service_fv957xt", // ID сервиса
+      "template_fbt5437", // ID шаблона
+      form.current,
+      "NZ2yqZjhuAZlMhekj" // Публичный ключ
+    )
+    .then((result) => {
+      console.log("Сообщение отправлено!", result.text);
+      alert("Ваше сообщение успешно отправлено!");
+    }, (error) => {
+      console.error("Ошибка отправки:", error.text);
+      alert("Ошибка при отправке сообщения.");
+    });
+  };
 
   useEffect(() => {
     // Получаем текущее положение экрана пользователя
     const viewportHeight = window.innerHeight;
     const scrollY = window.scrollY;
     setModalTop(scrollY + viewportHeight / 1.5 ); // Центрирование окна по видимой области
-
     setTimeout(() => setIsVisible(true), 50); // Плавное появление
     document.body.classList.add("modal-open"); // 🔹 Запрещаем прокрутку
 
@@ -32,20 +68,23 @@ const ContactModal = ({ setIsOpen }) => {
       <h2>Свяжитесь с нами</h2>
       <p>Мы всегда готовы помочь! Заполните форму или воспользуйтесь контактами ниже.</p>
 
-      <form className="contact-form">
+      <form ref={form} onSubmit={(e) => {
+  sendEmail(e); // Отправка письма через EmailJS
+  sentEmail(e); // Вторая функция, например, логирование
+}} className="contact-form">
         <div className="input-field">
-          <input type="text" id="name" required />
+          <input type="text" name="name" required  />
           <label htmlFor="name">Ваше имя</label>
         </div>
         <div className="input-field">
-          <input type="email" id="email" required />
+          <input type="email" name="email" required />
           <label htmlFor="email">Email</label>
         </div>
         <div className="input-field">
-          <textarea id="message" className="materialize-textarea" required></textarea>
+          <textarea name="message" className="materialize-textarea" required></textarea>
           <label htmlFor="message">Сообщение</label>
         </div>
-        <button className="btn">Отправить</button>
+        <button type="submit" className="btn">Отправить</button>
       </form>
 
       {/* 🔹 Контактная информация */}

@@ -105,3 +105,9 @@ body.modal-open {
     margin-left: -25px;
   }
 }
+@media screen and (min-width: 770px) {
+  .modal-content {
+    left: 47% !important;
+    transform: translate(-47%, -50%);
+  }
+}
