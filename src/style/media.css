@@ -5,7 +5,7 @@
 			width: 60%;
 		}
 
-		.navbar .navbar-menu li a {
+		.navbar .navbar-menu li  {
 			font-size: 10px;
 		}
 		
@@ -21,9 +21,6 @@
   text-align: center;
   font-size: 12px;
 }
-
-
-	
 
 		.viber {
 			height: 20px;
@@ -176,12 +173,16 @@
 	.navbar .number  {
 		display: none;
 	}
-	.navbar-menu .padding{
-		font-size: 10px;
-	}
+	.navbar .navbar-menu li  {
+			font-size: 15px;
+		}
 }
 
-
+@media screen and (max-width: 751px){
+	.navbar .navbar-menu li  {
+			font-size: 10px;
+		}
+}
 
 @media screen and (max-width: 550px) {
 	

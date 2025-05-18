@@ -65,6 +65,7 @@
 
 .navbar-menu .padding {
 	padding-right: 20px;
+	font-size: 14px;
 }
 
 .number li:hover {
@@ -86,14 +87,8 @@
 	text-decoration: none;
 	padding-right: 10px;
 	transition: all .07s ease-in-out;
+	font-size: 13px;
 }
-
-	
-
-
-
-
-
 
 	/* Офисы площадью... */
 .office {
