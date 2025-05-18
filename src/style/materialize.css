@@ -2149,12 +2149,8 @@
  */
 html {
   line-height: 1.15;
-  /* 1 */
-  -ms-text-size-adjust: 100%;
-  /* 2 */
-   -webkit-text-size-adjust: 100%; /* Для Safari */
-  text-size-adjust: 100%; /* Для остальных браузеров */
-  /* 2 */
+  -webkit-text-size-adjust: 100%; /* Современный вариант */
+  text-size-adjust: 100%; /* Для Safari и старых версий Chrome */
 }
 
 /* Sections
@@ -2241,8 +2237,8 @@ pre {
 a {
   background-color: transparent;
   /* 1 */
+   text-decoration: underline;
   text-decoration-skip-ink: auto; /* Современный вариант */
-  /* 2 */
 }
 
 /**
@@ -2413,9 +2409,9 @@ button,
 html [type="button"],
 [type="reset"],
 [type="submit"] {
-  -webkit-appearance: none; /* Для Safari и Chrome */
-  -moz-appearance: none; /* Для Firefox */
-  appearance: none; /* Стандартное свойство */
+   -moz-appearance: none; /* Standard property */
+  -webkit-appearance: none; /* For Safari */
+  appearance: none; /* For Firefox */
   /* 2 */
 }
 
@@ -2513,13 +2509,12 @@ textarea {
  * 2. Correct the outline style in Safari.
  */
 [type="search"] {
-  -webkit-appearance: none; /* Для Safari и Chrome */
-  -moz-appearance: none; /* Для Firefox */
-  appearance: none; /* Стандартное свойство */
-  /* 1 */
-  outline-offset: -2px;
-  /* 2 */
+  -moz-appearance: textfield; /* Firefox */
+  -webkit-appearance: textfield; /* Safari & old Chrome */
+  appearance: textfield; /* Standard property */
+  outline-offset: -2px; /* Keeps the offset */
 }
+
 
 /**
  * Remove the inner padding and cancel buttons in Chrome and Safari on macOS.
@@ -2789,12 +2784,19 @@ video.responsive-video {
   color: rgba(255, 255, 255, 0.7);
 }
 
-.breadcrumb i,
-.breadcrumb [class^="mdi-"], .breadcrumb [class*="mdi-"],
-.breadcrumb i.material-icons {
-  display: inline-block;
-  font-size: 24px;
+.breadcrumb {
+  display: flex;
+  align-items: center; /* Aligns icons and text */
 }
+
+.breadcrumb i,
+.breadcrumb [class^="mdi-"], 
+.breadcrumb [class*="mdi-"], 
+.breadcrumb i.material-icons {
+  font-size: 24px;
+  margin-right: 8px; /* Adds spacing */
+}
+
 
 .breadcrumb:before {
   content: '\E5CC';
@@ -5719,9 +5721,10 @@ body.keyboard-focused .dropdown-content li:focus {
 .waves-circle {
   -webkit-transform: translateZ(0);
           transform: translateZ(0);
-  -webkit-mask-image: url("mask.png"); /* Для Chrome, Safari */
-  mask-image: url("mask.png"); /* Для Firefox */
+  -webkit-mask-image: -webkit-radial-gradient(circle, white 100%, black 100%);
+  mask-image: radial-gradient(circle, white 100%, black 100%); /* Standard property */
 }
+
 
 .waves-input-wrapper {
   border-radius: 0.2em;
@@ -5741,9 +5744,10 @@ body.keyboard-focused .dropdown-content li:focus {
   height: 2.5em;
   line-height: 2.5em;
   border-radius: 50%;
-  -webkit-mask-image: url("mask.png"); /* Для Chrome, Safari */
-  mask-image: url("mask.png"); /* Для Firefox */
+  -webkit-mask-image: none;
+  mask-image: none; /* Standard property for compatibility */
 }
+
 
 .waves-block {
   display: block;
@@ -6055,8 +6059,8 @@ body.keyboard-focused .dropdown-content li:focus {
   position: relative;
   -webkit-transition: opacity .4s;
   transition: opacity .4s;
-   -webkit-backface-visibility: hidden; /* Для Safari и Chrome */
-  backface-visibility: hidden; /* Стандартное свойство */
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden; /* Standard property for compatibility */
 }
 
 .materialboxed:hover:not(.active) {
@@ -6854,6 +6858,8 @@ textarea.materialize-textarea {
   pointer-events: none;
 }
 
+
+
 [type="checkbox"] + span:not(.lever) {
   position: relative;
   padding-left: 35px;
@@ -7396,10 +7402,11 @@ input[type=range] + .thumb.active .value {
 }
 
 input[type=range] {
-  -webkit-appearance: none; /* Для Safari и Chrome */
-  -moz-appearance: none; /* Для Firefox */
-  appearance: none; 
+  -moz-appearance: none; /* Firefox */
+  -webkit-appearance: none; /* Safari & old Chrome */
+  appearance: none; /* Standard property for compatibility */
 }
+
 
 input[type=range]::-webkit-slider-runnable-track {
   height: 3px;
@@ -7540,21 +7547,20 @@ input[type=range]::-ms-thumb {
   left: 0;
   top: 0;
   margin: 0;
-  -webkit-transform: translateX(-100%);
-          transform: translateX(-100%);
-  height: 100%;
-  height: -moz-calc(100% + 60px); /* Для Firefox */
-  height: calc(100% + 60px); /* Для остальных браузеров */
+  height: -moz-calc(100% + 60px); /* Firefox */
+  height: -webkit-calc(100% + 60px); /* Safari & old Chrome */
+  height: calc(100% + 60px); /* Standard property */
   padding-bottom: 60px;
   background-color: #fff;
   z-index: 999;
   overflow-y: auto;
   will-change: transform;
   -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
+  backface-visibility: hidden;
   -webkit-transform: translateX(-105%);
-          transform: translateX(-105%);
+  transform: translateX(-105%);
 }
+
 
 .sidenav.right-aligned {
   right: 0;

@@ -1,6 +1,6 @@
 import React from "react";
 import { createRoot } from "react-dom/client"; // ✅ Используем createRoot
-import App from "./App";
+// import App from "./App";
 import "./style/Navbar.css"; // ✅ Подключаем стили глобально
 import "./style/FirstGroup.css";
 import "./style/Footer.css"
@@ -37,11 +37,11 @@ const Second = () => <SecondGroup />;
 const root_4 = createRoot(document.getElementById("eight_post")); 
 root_4.render(<Second />); 
 
-const rootElement = document.getElementById("root");
+// const rootElement = document.getElementById("root");
 
-if (!rootElement) {
-  console.error("Элемент #root не найден! Проверь `index.html`.");
-} else {
-  createRoot(rootElement).render(<App />);
-}
+// // if (!rootElement) {
+// //   console.error("Элемент #root не найден! Проверь `index.html`.");
+// // } else {
+// //   createRoot(rootElement).render(<App />);
+// // }
 

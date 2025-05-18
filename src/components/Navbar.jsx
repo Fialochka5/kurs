@@ -29,17 +29,15 @@ const Navbar = () => {
             <li className="padding">
               Аренда
             </li>
-            <li>
+            <li className="padding">
               Контакты
             </li>
           </ul>
         </div>
         <div className="number">
           <ul>
-            <li>
-             
-                +375 44 585-77-77 
-              
+            <li>  
+                +375 44 585-77-77  
             </li>
             <li>
               +375 29 805-77-77 <img src="/images/viber.png" alt="" className="viber" />

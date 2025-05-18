@@ -1,4 +1,4 @@
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 900px) {
 
 		.navbar .image {
 			justify-self: center;
@@ -10,12 +10,20 @@
 		}
 		
 		.navbar .number {
-			justify-self: center;
-		}
+  justify-self: center;
+  display: flex;
+  flex-direction: column; /* Ставит элементы друг под другом */
+  align-items: center; /* Выравнивает по центру */
+}
 
-		.navbar .number li a {
-			font-size: 12px;
-		}
+.navbar .number li {
+  display: block; /* Делаем каждый элемент блочным */
+  text-align: center;
+  font-size: 12px;
+}
+
+
+	
 
 		.viber {
 			height: 20px;
@@ -152,19 +160,31 @@
 		}
 } 
 
+@media screen and (max-width: 840px) {
+	.navbar-menu .padding {
+		padding-right: 7px;
+	}
+	.navbar-menu .padding{
+		font-size: 10px;
+	}
+}
+
 @media screen and (max-width: 780px) {
 	.image-row .item:nth-child(1) h2 {
 		margin-top: 16%;
 	}
-}
-
-@media screen and (max-width: 670px) {
-	.navbar-menu .padding {
-		padding-right: 7px;
+	.navbar .number  {
+		display: none;
+	}
+	.navbar-menu .padding{
+		font-size: 10px;
 	}
 }
 
+
+
 @media screen and (max-width: 550px) {
+	
 	.navbar {
 		grid-template-rows: 55px;
 	}

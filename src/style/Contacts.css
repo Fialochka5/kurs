@@ -46,6 +46,10 @@
   cursor: pointer;
 }
 
+.btn {
+  margin-bottom: 10px;
+}
+
 /* ✅ Адаптация под **мобильные экраны** */
 @media screen and (max-width: 768px) {
   .modal-content {
@@ -86,6 +90,9 @@
 
   .info-item i {
     font-size: 1.6rem;
+  }
+  .contact-info .info-item{
+    margin-left: -25px;
   }
 }
 
