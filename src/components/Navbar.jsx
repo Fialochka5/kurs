@@ -11,7 +11,7 @@ const Navbar = () => {
     <>
       <nav className="navbar">
         <div className="image">
-          <img src="/images/nametest.png" alt="Logo" />
+          <Link to="/"><img src="/images/nametest.png" alt="Logo" /> </Link>
         </div>
         <a href=" " data-target="slide-out" className="sidenav-trigger">
           <i className="material-icons">menu</i>
@@ -25,7 +25,7 @@ const Navbar = () => {
               <Link to="/gallery">Галерея</Link> {/* Добавлен переход */}
             </li>
             <li className="padding">
-              <Link to="/rent">Аренда</Link>
+              <Link to="/admin">Аренда</Link>
             </li>
             <li className="padding">
               <Link to="/contacts">Контакты</Link>
@@ -55,7 +55,7 @@ const Navbar = () => {
           </Link>
         </li>
         <li>
-          <Link to="/rent" className="waves-effect">
+          <Link to="/admin" className="waves-effect">
             <i className="material-icons">payment</i>Аренда
           </Link>
         </li>

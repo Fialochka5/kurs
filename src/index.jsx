@@ -11,6 +11,7 @@ import "./style/Contacts.css";
 import "./style/Gallery.css";
 import "./style/main.css";
 import "./style/media.css";
+import "./style/AdminLogin.css";
 import "materialize-css/dist/js/materialize.min.js";
 
 const root = createRoot(document.getElementById("root"));

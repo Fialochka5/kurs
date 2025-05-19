@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef  } from "react";
 import emailjs from "@emailjs/browser";
 
+
 const ContactModal = ({ setIsOpen }) => {
   const [isVisible, setIsVisible] = useState(false);
   const [modalTop, setModalTop] = useState(0);

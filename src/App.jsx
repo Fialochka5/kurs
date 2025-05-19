@@ -5,6 +5,7 @@ import FirstGroup from "./components/FirstGroup";
 import SecondGroup from "./components/SecondGroop";
 import Footer from "./components/Footer";
 import Check from "./Check";
+import AdminLogin from "./Visual/AdminLogin";
 import OfficeMatrix from "./components/Gallery";
 import NotFound from "./js/NotFound"; // Страница 404
 
@@ -29,6 +30,7 @@ const App = () => {
     <Router>
       <Routes>
         <Route path="/" element={<HomePage />} />
+        <Route path="/admin" element={<AdminLogin />} /> {/*Админ вход} */}
         <Route path="/gallery" element={<GalleryPage />} /> {/* Галерея - осмотр*/}
         <Route path="*" element={<NotFound />} /> {/* Страница 404 */}
         <Route path="/check" element={<Check />} /> {/* Страница 404 */}
