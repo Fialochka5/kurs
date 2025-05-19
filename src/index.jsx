@@ -8,6 +8,7 @@ import "./style/FirstGroup.css";
 import "./style/Footer.css";
 import "./style/SecondGroup.css";
 import "./style/Contacts.css";
+import "./style/Gallery.css";
 import "./style/main.css";
 import "./style/media.css";
 import "materialize-css/dist/js/materialize.min.js";

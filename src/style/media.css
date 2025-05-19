@@ -5,7 +5,7 @@
 			width: 60%;
 		}
 
-		.navbar .navbar-menu li  {
+		.navbar .navbar-menu  a {
 			font-size: 10px;
 		}
 		
@@ -158,10 +158,10 @@
 } 
 
 @media screen and (max-width: 840px) {
-	.navbar-menu .padding {
+	.navbar-menu .padding  a{
 		padding-right: 7px;
 	}
-	.navbar-menu .padding{
+	.navbar-menu .padding  a{
 		font-size: 10px;
 	}
 }
@@ -173,18 +173,18 @@
 	.navbar .number  {
 		display: none;
 	}
-	.navbar .navbar-menu li  {
-			font-size: 15px;
+	.navbar .navbar-menu  a {
+			font-size: 12x;
 		}
 }
 
 @media screen and (max-width: 751px){
-	.navbar .navbar-menu li  {
+	.navbar .navbar-menu  .padding a  {
 			font-size: 10px;
 		}
 }
 
-@media screen and (max-width: 550px) {
+@media screen and (max-width: 560px) {
 	
 	.navbar {
 		grid-template-rows: 55px;

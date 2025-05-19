@@ -44,7 +44,7 @@
 	padding-left: 0;
 }
 
-.navbar-menu li {
+.navbar-menu .padding a {
 	display: inline;
 	list-style-type: none; 
 	margin: 0;
@@ -57,13 +57,13 @@
 }
 
 
-.navbar-menu li:hover {
+.navbar-menu li a:hover {
 	background-color: inherit;
 	opacity: 1;
 	
 }
 
-.navbar-menu .padding {
+.navbar-menu .padding a {
 	padding-right: 20px;
 	font-size: 14px;
 }
@@ -88,31 +88,6 @@
 	padding-right: 10px;
 	transition: all .07s ease-in-out;
 	font-size: 13px;
-}
-
-	/* Офисы площадью... */
-.office {
-	text-align: center;
-	width: 100%;
-	color: #003655;
-	font-size: 3vw;
-	font-weight: 700;
-	margin-bottom: 3%;
-	margin-top: 4%;
-}
-
-	/* Матрица из фото и видео */
-.matrix {
-    grid-gap: 10px;
-    position: relative;
-    left: 20%;
-    width: 60%;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-}
-
-.matrix img {
-    height: 100%;
 }
 
 	/* Просто текст */

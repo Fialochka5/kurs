@@ -1,19 +1,17 @@
 import React, { useEffect } from "react";
+import { Link } from "react-router-dom"; // Импортируем Link
 import M from "materialize-css";
-
 
 const Navbar = () => {
   useEffect(() => {
-  M.Sidenav.init(document.querySelectorAll(".sidenav"));
-}, []);
+    M.Sidenav.init(document.querySelectorAll(".sidenav"));
+  }, []);
 
   return (
     <>
       <nav className="navbar">
         <div className="image">
-         
           <img src="/images/nametest.png" alt="Logo" />
-         
         </div>
         <a href=" " data-target="slide-out" className="sidenav-trigger">
           <i className="material-icons">menu</i>
@@ -21,24 +19,22 @@ const Navbar = () => {
         <div className="navbar-menu">
           <ul>
             <li className="padding">
-             О нас
+              <Link to="/about">О нас</Link>
             </li>
             <li className="padding">
-              Галерея
+              <Link to="/gallery">Галерея</Link> {/* Добавлен переход */}
             </li>
             <li className="padding">
-              Аренда
+              <Link to="/rent">Аренда</Link>
             </li>
             <li className="padding">
-              Контакты
+              <Link to="/contacts">Контакты</Link>
             </li>
           </ul>
         </div>
         <div className="number">
           <ul>
-            <li>  
-                +375 44 585-77-77  
-            </li>
+            <li>+375 44 585-77-77</li>
             <li>
               +375 29 805-77-77 <img src="/images/viber.png" alt="" className="viber" />
             </li>
@@ -47,32 +43,28 @@ const Navbar = () => {
       </nav>
 
       <ul id="slide-out" className="sidenav">
+        <li><div className="user-view"></div></li>
         <li>
-          <div className="user-view"></div>
-        </li>
-        <li>
-          <a className="waves-effect" href="#!">
+          <Link to="/about" className="waves-effect">
             <i className="material-icons">contact_mail</i>О нас
-          </a>
+          </Link>
         </li>
         <li>
-          <a className="waves-effect" href="#!">
+          <Link to="/gallery" className="waves-effect"> {/* Галерея */}
             <i className="material-icons">perm_media</i>Галерея
-          </a>
+          </Link>
         </li>
         <li>
-          <a className="waves-effect" href="#!">
+          <Link to="/rent" className="waves-effect">
             <i className="material-icons">payment</i>Аренда
-          </a>
+          </Link>
         </li>
         <li>
-          <a className="waves-effect" href="#!">
+          <Link to="/contacts" className="waves-effect">
             <i className="material-icons">call_end</i>Контакты
-          </a>
+          </Link>
         </li>
-        <li>
-          <div className="divider"></div>
-        </li>
+        <li><div className="divider"></div></li>
         <li>
           <a href="#!" className="sidenav-close">
             <i className="material-icons">close</i>Закрыть
@@ -84,3 +76,4 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
