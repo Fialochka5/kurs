@@ -1,0 +1,13 @@
+/home/fialochka5/sem2/testkurs/demo/src/main/java/com/example/demo/entity/Admin.java
+/home/fialochka5/sem2/testkurs/demo/src/main/java/com/example/demo/controllers/AdminController.java
+/home/fialochka5/sem2/testkurs/demo/src/main/java/com/example/demo/service/AdminService.java
+/home/fialochka5/sem2/testkurs/demo/src/main/java/com/example/demo/controllers/MyController.java
+/home/fialochka5/sem2/testkurs/demo/src/main/java/com/example/demo/model/Rental.java
+/home/fialochka5/sem2/testkurs/demo/src/main/java/com/example/demo/config/WebConfig.java
+/home/fialochka5/sem2/testkurs/demo/src/main/java/com/example/demo/repository/RentalRepository.java
+/home/fialochka5/sem2/testkurs/demo/src/main/java/com/example/demo/controllers/RentalController.java
+/home/fialochka5/sem2/testkurs/demo/src/main/java/com/example/demo/controllers/MController.java
+/home/fialochka5/sem2/testkurs/demo/src/main/java/com/example/demo/dto/AdminLoginRequest.java
+/home/fialochka5/sem2/testkurs/demo/src/main/java/com/example/demo/controllers/ErrorController.java
+/home/fialochka5/sem2/testkurs/demo/src/main/java/com/example/demo/Access/AccessingDataMysqlApplication.java
+/home/fialochka5/sem2/testkurs/demo/src/main/java/com/example/demo/DemoApplication.java

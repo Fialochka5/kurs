@@ -2,6 +2,7 @@ package com.example.demo.controllers;
 import com.example.demo.model.Rental;
 import com.example.demo.repository.RentalRepository;
 import org.springframework.web.bind.annotation.*;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 
 @RestController
