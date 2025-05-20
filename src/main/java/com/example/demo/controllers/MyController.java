@@ -1,7 +1,6 @@
 package com.example.demo.controllers; // ✅ Проверяем правильность пакета
 
 import org.springframework.web.bind.annotation.*;
-import org.springframework.http.ResponseEntity;
 import java.util.HashMap;
 import java.util.Map;
 
