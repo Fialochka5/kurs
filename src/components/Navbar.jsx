@@ -6,7 +6,7 @@ const Navbar = () => {
   useEffect(() => {
     M.Sidenav.init(document.querySelectorAll(".sidenav"));
   }, []);
-
+  
   return (
     <>
       <nav className="navbar">

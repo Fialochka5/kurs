@@ -1,0 +1,40 @@
+.detailed-rental {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  background: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+.detailed-rental img {
+  width: 100%;
+  max-height: 400px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.rental-video video {
+  width: 100%;
+  border-radius: 8px;
+  margin-top: 15px;
+}
+
+@media (max-width: 600px) {
+  .detailed-rental {
+    padding: 15px;
+  }
+
+  .detailed-rental img {
+    max-height: 300px;
+  }
+
+  .rental-video video {
+    max-height: 250px;
+  }
+
+  .detailed-rental h2 {
+    font-size: 20px;
+    text-align: center;
+  }
+}

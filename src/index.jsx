@@ -13,6 +13,7 @@ import "./style/Gallery.css";
 import "./style/main.css";
 import "./style/About.css";
 import "./style/Rent.css";
+import "./style/DetailedRental.css";
 import "./style/Connection.css";
 import "./style/media.css";
 import "materialize-css/dist/js/materialize.min.js";

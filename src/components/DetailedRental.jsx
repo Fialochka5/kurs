@@ -1,7 +1,7 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
-const offers = [
+const rentalData = [
   { id: "1", title: "Бизнес-центр «Брест Деловой»", area: "6,2 тыс. м²", price: "от 20 BYN/м²", img: "images/rental1.jpg" },
   { id: "2", title: "Многофункциональный центр", area: "5,5 тыс. м²", price: "от 18 BYN/м²", img: "images/rental2.jpg" },
   { id: "3", title: "Офис-центр «Domus City»", area: "6,4 тыс. м²", price: "от 22 BYN/м²", img: "images/rental3.jpg" },
@@ -14,32 +14,29 @@ const offers = [
 ];
 
 
-const Rental = () => {
+const DetailedRental = () => {
+  const { id } = useParams();
+  const offer = rentalData.find((item) => item.id === id);
+
+  if (!offer) {
+    return <p>Предложение не найдено.</p>;
+  }
+
   return (
-     <>
-      <div className="rental-header">
-        <h2>ПРЕДЛОЖЕНИЯ ПО АРЕНДЕ</h2>
+    <div className="detailed-rental">
+      <h2>{offer.title}</h2>
+      <img src={offer.img} alt={offer.title} />
+      <p>Площадь: {offer.area}</p>
+      <p>Цена: {offer.price}</p>
+
+      <div className="rental-video">
+        <video width="100%" controls>
+          <source src="https://cdn.pixabay.com/video/2015/10/16/1046-142621379_large.mp4" type="video/mp4" />
+          Ваш браузер не поддерживает видео.
+        </video>
       </div>
-    <div className="rental-container">
-      
-      {offers.map((offer) => (
-        <div className="rental-item" key={offer.id}>
-          <img src={offer.img} alt={offer.title} />
-          <div className="rental-info">
-            <h3>{offer.title}</h3>
-            <p>Площадь: {offer.area}</p>
-            <p>Цена: {offer.price}</p>
-            <Link to={`/rental/${offer.id}`} >
-              <i className="material-icons">info</i> Подробнее
-            </Link>
-          </div>
-        </div>
-      ))}
     </div>
-      </>
   );
 };
 
-export default Rental;
-
-
+export default DetailedRental;
