@@ -25,7 +25,7 @@ const Navbar = () => {
               <Link to="/gallery">Галерея</Link> {/* Добавлен переход */}
             </li>
             <li className="padding">
-              <Link to="/admin">Аренда</Link>
+              <Link to="/rent">Аренда</Link>
             </li>
             <li className="padding">
               <Link to="/contacts">Контакты</Link>
@@ -55,7 +55,7 @@ const Navbar = () => {
           </Link>
         </li>
         <li>
-          <Link to="/admin" className="waves-effect">
+          <Link to="/rent" className="waves-effect">
             <i className="material-icons">payment</i>Аренда
           </Link>
         </li>

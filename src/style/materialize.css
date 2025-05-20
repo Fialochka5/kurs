@@ -7579,7 +7579,6 @@ input[type=range]::-ms-thumb {
   float: none;
   line-height: 48px;
 }
-
 .sidenav li.active {
   background-color: rgba(0, 0, 0, 0.05);
 }
