@@ -1,0 +1,139 @@
+/* Контакты */
+.contacts p {
+    text-align: center;
+    width: 100%;
+    color: #003655;
+    font-size: 2.8vw;
+    font-weight: 700;
+    margin: 3% 0 1%;
+}
+
+/* Контейнер для контактной информации */
+.contact-info {
+    position: relative;
+    width: 55%;
+    left: 22.5%;
+    margin-bottom: 3%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Верхний ряд контактов */
+.contact-info .top-row {
+    font-size: 1vw;
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.top-row .image-item {
+    color: #003655;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.top-row .image-item .material-icons {
+    font-size: 3.5vw;
+}
+
+/* Нижний ряд контактов */
+.contact-info .bottom-row {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    margin-top: 2%;
+}
+
+.bottom-row .text-item {
+    color: #003655;
+    font-size: 1vw;
+    text-align: center;
+}
+
+.bottom-row .text-item img { 
+    width: 95px;
+    height: auto;
+    margin-bottom: 5%;
+}
+
+/* Карта */
+.map {
+    display: flex;
+    justify-content: center;
+    margin-top: 2%;
+}
+
+.map img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+/* Медиа-запросы */
+@media (max-width: 1024px) {
+    .contacts p {
+        font-size: 3.5vw;
+    }
+    .contact-info {
+        width: 70%;
+        left: 15%;
+    }
+    .top-row .image-item .material-icons {
+        font-size: 4vw;
+    }
+    .bottom-row .text-item p {
+        font-size: 1.2vw;
+    }
+}
+
+@media (max-width: 768px) {
+    .contacts p {
+        font-size: 4.5vw;
+    }
+    .contact-info {
+        width: 80%;
+        left: 10%;
+    }
+    .top-row {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    .top-row .image-item {
+        margin-bottom: 10px;
+    }
+    .top-row .image-item .material-icons {
+        font-size: 5vw;
+    }
+    .bottom-row {
+        flex-direction: column;
+        align-items: center;
+    }
+    .bottom-row .text-item {
+        margin-bottom: 10px;
+    }
+      .bottom-row .text-item p {
+        font-size: 1.8vw;
+    }
+}
+
+@media (max-width: 480px) {
+    .contacts p {
+        font-size: 5.5vw;
+    }
+    .contact-info {
+        width: 90%;
+        left: 5%;
+    }
+    .top-row .image-item .material-icons {
+        font-size: 6vw;
+    }
+    .bottom-row .text-item img {
+        width: 35px;
+    }
+    .bottom-row .text-item p {
+        font-size: 3.5vw;
+    }
+}

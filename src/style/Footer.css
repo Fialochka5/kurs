@@ -17,3 +17,22 @@
 .sidenav-trigger {
 	display: none;
 }
+.footer-text {
+	margin-left: 35%;
+	margin-right: 35%;
+	padding: 1%;
+	background-color: #008DE2;
+	border-radius: 100px;
+	color: white;
+	font-size: 1vw;
+	transition: all .1s ease-in-out;
+}
+
+.footer-text:hover{
+	transform: scale(1.04);
+}
+
+.footer-text  a {
+	text-decoration: none;
+	color: white;
+}

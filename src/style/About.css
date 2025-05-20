@@ -1,0 +1,97 @@
+	/* О компании */
+.company {
+	text-align: center;
+	width: 100%;
+	color: #003655;
+	font-size: 3vw;
+	font-weight: 700;
+	margin-bottom: 3%;
+	margin-top: 4%;
+}
+
+.company-info {
+	position: relative;
+	left: 20%;
+	display: flex;
+	align-items: flex-start;
+	width: 60%;
+	margin-bottom: 3%;
+}
+
+.company-info-mb {
+	display: none;
+}
+	
+.company-info .left {
+	width: 60%; 
+	padding-right: 3%; 
+}
+	
+.company-info .left .start-text {
+	margin-top: 0;
+	font-size: .8vw;
+}
+	
+.company-info .left .center-text {
+	font-size: 1vw;
+	color: #003655;
+}
+	
+.company-info .houses {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr); 
+}
+	
+.company-info .houses .item {
+	font-size: .9vw;
+	display: flex;
+	align-items: center;
+}
+
+.company-info .houses .item:nth-child(1){
+	padding-bottom: 2.5%;
+}
+	
+
+.company-info .houses .item:nth-child(2){
+	padding-bottom: 2.5%;
+}
+.company-info .houses .item img {
+	width: 20%;
+	height: auto; 
+	margin-right: 3%;
+}
+	
+.company-info .right {
+	padding-top: 1%;
+	width: 40%; 
+}
+	
+.company-info .right img {
+	width: 110%;
+	height: auto;
+}
+
+	/* Пирамида из фото */
+.pyramid-up {
+    position: relative;
+    left: 10%;
+    display: grid;
+    width: 80%;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr ));
+    grid-gap: 10px;
+    margin-bottom: 10px;
+}
+
+.pyramid-down {
+    position: relative;
+    left: 10%;
+    display: grid;
+    width: 80%;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr ));
+    grid-gap: 10px;
+}
+
+.pyramid-mb {
+	display: none;
+}

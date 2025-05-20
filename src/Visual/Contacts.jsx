@@ -62,7 +62,7 @@ const ContactModal = ({ setIsOpen }) => {
       style={{ 
         top: `${modalTop}px`, 
         left: "40%", /* Смещаем левее */
-        transform: "translate(-40%, -50%)" /* Корректируем смещение */
+        transform: "translate(-40%, -40%)" /* Корректируем смещение */
       }} 
     >
       <span className="close-btn" onClick={() => setIsOpen(false)}>&times;</span>
