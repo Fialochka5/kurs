@@ -1,6 +1,7 @@
 /* Основное модальное окно */
 .modal-overlays {
   position: fixed;
+  z-index: 9999;
   top: 0;
   left: 0;
   width: 100%;
@@ -33,6 +34,7 @@
   text-align: center;
   transition: opacity 0.4s ease-out;
   opacity: 0;
+  z-index: 9999;
 }
 
 .modal-contents.slide-up {

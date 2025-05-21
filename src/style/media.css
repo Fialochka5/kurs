@@ -1,4 +1,4 @@
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 1100px) {
 
 .navbar .image {
 	justify-self: center;
@@ -6,6 +6,9 @@
 }
 
 .navbar .navbar-menu  a {
+	font-size: 10px;
+}
+.navbar .navbar-menu  span {
 	font-size: 10px;
 }
 		
@@ -149,12 +152,14 @@
 		}
 } 
 
-@media screen and (max-width: 840px) {
+@media screen and (max-width: 850px) {
 	.navbar-menu .padding  a{
 		padding-right: 7px;
+		font-size: 8px;
 	}
-	.navbar-menu .padding  a{
-		font-size: 10px;
+	.navbar-menu .padding  span{
+		padding-right: 7px;
+		font-size: 8px;
 	}
 }
 
@@ -168,10 +173,16 @@
 	.navbar .navbar-menu  a {
 			font-size: 12x;
 		}
+	.navbar .navbar-menu  span {
+		font-size: 12x;
+	}
 }
 
 @media screen and (max-width: 751px){
 	.navbar .navbar-menu  .padding a  {
+			font-size: 10px;
+		}
+		.navbar .navbar-menu  .padding span  {
 			font-size: 10px;
 		}
 }

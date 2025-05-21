@@ -56,18 +56,35 @@
 	font-size: small;
 }
 
-
+.navbar-menu .padding span {
+	display: inline;
+	list-style-type: none; 
+	margin: 0;
+	padding: 0;
+	color: #000;
+	opacity: 0.7;
+	text-decoration: none;
+	transition: all .07s ease-in-out;
+	font-size: small;
+}
 .navbar-menu li a:hover {
 	background-color: inherit;
 	opacity: 1;
 	
 }
-
+.navbar-menu li span:hover {
+	background-color: inherit;
+	opacity: 1;
+	
+}
 .navbar-menu .padding a {
 	padding-right: 20px;
 	font-size: 14px;
 }
-
+.navbar-menu .padding span {
+	padding-right: 20px;
+	font-size: 14px;
+}
 .number li:hover {
 	background-color: inherit;
 }
