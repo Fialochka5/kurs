@@ -8,7 +8,8 @@ public class Gallery {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String picture;
+    private String img;
+    private String video;
 
     // Геттеры и сеттеры
     public Long getId() {
@@ -19,13 +20,19 @@ public class Gallery {
         this.id = id;
     }
 
-    public String getPicture() {
-        return picture;
+    public String getImg() {
+        return img;
     }
 
-    public void setPicture(String picture) {
-        this.picture = picture;
+    public void setImg(String img) {
+        this.img = img;
+    }
+    public String getVideo() {
+        return video;
     }
 
+    public void setVideo(String video) {
+        this.video = video;
+    }
 
 }

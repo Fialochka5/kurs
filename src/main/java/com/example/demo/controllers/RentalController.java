@@ -40,6 +40,18 @@ public class RentalController {
                 .map(ResponseEntity::ok)
                 .orElseGet(() -> ResponseEntity.status(HttpStatus.NOT_FOUND).body(null));
     }
+    @PutMapping("/update/{id}")
+    public ResponseEntity<Rental> updateOffer(@PathVariable Long id, @RequestBody Rental updatedRental) {
+        return rentalRepository.findById(id).map(rental -> {
+            rental.setTitle(updatedRental.getTitle());
+            rental.setArea(updatedRental.getArea());
+            rental.setPrice(updatedRental.getPrice());
+            rental.setImg(updatedRental.getImg());
+            rental.setVideo(updatedRental.getVideo());
+            rentalRepository.save(rental);
+            return ResponseEntity.ok(rental);
+        }).orElseGet(() -> ResponseEntity.status(HttpStatus.NOT_FOUND).body(null));
+    }
 
 
 }
