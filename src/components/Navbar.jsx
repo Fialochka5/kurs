@@ -1,18 +1,32 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import M from "materialize-css";
-import AdminLogin from "../Visual/AdminLogin"; // Модальное окно входа
+import AdminLogin from "../Visual/AdminLogin";
 
 const Navbar = () => {
-  useEffect(() => {
-    M.Sidenav.init(document.querySelectorAll(".sidenav"));
-  }, []);
-
   // Управление состояниями
   const [isOpen, setIsOpen] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false); // Добавляем
+  const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem("token")); 
+  const [role, setRole] = useState(localStorage.getItem("role") || "user"); 
+
+  // Загружаем роль при изменении `isLoggedIn`
+  useEffect(() => {
+    setRole(localStorage.getItem("role") || "user");
+    M.Sidenav.init(document.querySelectorAll(".sidenav"));
+  }, [isLoggedIn]);
+
+  // Функция выхода
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("role");
+
+    setIsLoggedIn(false);
+    setRole("user"); // Обновляем React состояние
+    console.log("Роль после выхода:", localStorage.getItem("role")); // Проверяем удаление
+  };
 
   console.log("Состояние модального окна:", isOpen);
+  console.log("Роль пользователя:", role);
 
   return (
     <>
@@ -25,26 +39,26 @@ const Navbar = () => {
         </a>
         <div className="navbar-menu">
           <ul>
-            <li className="padding">
-              <Link to="/about">О нас</Link>
-            </li>
-            <li className="padding">
-              <Link to="/gallery">Галерея</Link>
-            </li>
-            <li className="padding">
-              <Link to="/rent">Аренда</Link>
-            </li>
-            <li className="padding">
-              <Link to="/contacts">Контакты</Link>
-            </li>
-            {!isLoggedIn ? ( // Показываем "Вход", если не авторизован
+            <li className="padding"><Link to="/about">О нас</Link></li>
+            <li className="padding"><Link to="/gallery">Галерея</Link></li>
+            <li className="padding"><Link to="/rent">Аренда</Link></li>
+            <li className="padding"><Link to="/contacts">Контакты</Link></li>
+
+            {!isLoggedIn ? (
               <li className="padding">
                 <Link className="clickable" onClick={() => setIsOpen(true)}>Вход</Link>
               </li>
             ) : (
-              <li className="padding">
-                <Link className="clickable" onClick={() => setIsLoggedIn(false)}>Выход</Link>
-              </li>
+              <>
+                {role === "admin" && (
+                  <li className="padding">
+                    <Link to="/admin">Админ-панель</Link>
+                  </li>
+                )}
+                <li className="padding">
+                  <Link className="clickable" onClick={handleLogout}>Выход</Link>
+                </li>
+              </>
             )}
           </ul>
         </div>
@@ -58,31 +72,32 @@ const Navbar = () => {
 
       <ul id="slide-out" className="sidenav">
         <li><div className="user-view"></div></li>
-        <li>
-          <Link to="/about"><i className="material-icons">contact_mail</i>О нас</Link>
-        </li>
-        <li>
-          <Link to="/gallery"><i className="material-icons">perm_media</i>Галерея</Link>
-        </li>
-        <li>
-          <Link to="/rent"><i className="material-icons">payment</i>Аренда</Link>
-        </li>
-        <li>
-          <Link to="/contacts"><i className="material-icons">call_end</i>Контакты</Link>
-        </li>
-        {!isLoggedIn ? ( // Условный рендеринг
+        <li><Link to="/about"><i className="material-icons">contact_mail</i>О нас</Link></li>
+        <li><Link to="/gallery"><i className="material-icons">perm_media</i>Галерея</Link></li>
+        <li><Link to="/rent"><i className="material-icons">payment</i>Аренда</Link></li>
+        <li><Link to="/contacts"><i className="material-icons">call_end</i>Контакты</Link></li>
+
+        {!isLoggedIn ? (
           <li>
             <Link className="clickable" onClick={() => setIsOpen(true)}>
               <i className="material-icons">lock_open</i> Вход
             </Link>
           </li>
         ) : (
-          <li>
-            <Link className="clickable" onClick={() => setIsLoggedIn(false)}>
-              <i className="material-icons">logout</i> Выход
-            </Link>
-          </li>
+          <>
+            {role === "admin" && (
+              <li>
+                <Link to="/admin"><i className="material-icons">admin_panel_settings</i> Админ-панель</Link>
+              </li>
+            )}
+            <li>
+              <Link className="clickable" onClick={handleLogout}>
+                <i className="material-icons">logout</i> Выход
+              </Link>
+            </li>
+          </>
         )}
+
         <li><div className="divider"></div></li>
         <li>
           <a href="#!" className="sidenav-close">
@@ -92,7 +107,7 @@ const Navbar = () => {
       </ul>
 
       {/* Модальное окно входа */}
-      {isOpen && <AdminLogin setIsOpen={setIsOpen} setIsLoggedIn={setIsLoggedIn} />}  
+      {isOpen && <AdminLogin setIsOpen={setIsOpen} setIsLoggedIn={setIsLoggedIn} setRole={setRole} />}
     </>
   );
 };

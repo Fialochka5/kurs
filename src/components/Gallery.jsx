@@ -4,9 +4,10 @@ const OfficeMatrix = () => {
   const [media, setMedia] = useState([]);
   const [newImage, setNewImage] = useState("");
   const [newVideo, setNewVideo] = useState("");
+  const [role, setRole] = useState(localStorage.getItem("role") || "user"); // Получаем роль пользователя
 
-  // Загружаем медиафайлы с сервера
   useEffect(() => {
+    setRole(localStorage.getItem("role") || "user");
     const fetchMedia = async () => {
       try {
         const response = await fetch("http://localhost:8080/api/gallery");
@@ -20,7 +21,6 @@ const OfficeMatrix = () => {
     fetchMedia();
   }, []);
 
-  // Функция добавления изображения
   const handleAddImage = async () => {
     try {
       const response = await fetch("http://localhost:8080/api/gallery/add", {
@@ -42,7 +42,6 @@ const OfficeMatrix = () => {
     }
   };
 
-  // Функция добавления видео
   const handleAddVideo = async () => {
     try {
       const response = await fetch("http://localhost:8080/api/gallery/add", {
@@ -64,7 +63,6 @@ const OfficeMatrix = () => {
     }
   };
 
-  // Функция удаления медиафайла
   const handleDeleteMedia = async (id) => {
     try {
       const response = await fetch(`http://localhost:8080/api/gallery/delete/${id}`, {
@@ -84,12 +82,10 @@ const OfficeMatrix = () => {
 
   return (
     <div>
-      {/* Офисы */}
       <div className="office">
         <p>ОФИСЫ ПЛОЩАДЬЮ ОТ 20 ДО 1000 М2</p>
       </div>
 
-      {/* Матрица из фото и видео */}
       <div className="matrix">
         {media.map((item) => (
           <div key={item.id} className="media-item">
@@ -102,33 +98,34 @@ const OfficeMatrix = () => {
             ) : (
               <p>Нет медиафайла</p>
             )}
-            <button className="delete-btn" onClick={() => handleDeleteMedia(item.id)}>🗑 Удалить</button>
+            {role === "admin" && (
+              <button className="delete-btn" onClick={() => handleDeleteMedia(item.id)}>🗑 Удалить</button>
+            )}
           </div>
         ))}
       </div>
 
-      {/* Форма добавления нового медиафайла */}
-      <div className="add-media-container">
-        <input
-          type="text"
-          placeholder="Ссылка на изображение"
-          value={newImage}
-          onChange={(e) => setNewImage(e.target.value)}
-        />
-        <button onClick={handleAddImage}>Добавить изображение</button>
+      {role === "admin" && (
+        <div className="add-media-container">
+          <input
+            type="text"
+            placeholder="Ссылка на изображение"
+            value={newImage}
+            onChange={(e) => setNewImage(e.target.value)}
+          />
+          <button onClick={handleAddImage}>Добавить изображение</button>
 
-        <input
-          type="text"
-          placeholder="Ссылка на видео"
-          value={newVideo}
-          onChange={(e) => setNewVideo(e.target.value)}
-        />
-        <button onClick={handleAddVideo}>Добавить видео</button>
-      </div>
+          <input
+            type="text"
+            placeholder="Ссылка на видео"
+            value={newVideo}
+            onChange={(e) => setNewVideo(e.target.value)}
+          />
+          <button onClick={handleAddVideo}>Добавить видео</button>
+        </div>
+      )}
     </div>
   );
 };
 
 export default OfficeMatrix;
-
-

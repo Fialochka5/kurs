@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const AdminLogin = ({ setIsOpen, setIsLoggedIn }) => {
+const AdminLogin = ({ setIsOpen, setIsLoggedIn, setRole }) => { // Добавляем setRole
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
@@ -9,25 +9,34 @@ const AdminLogin = ({ setIsOpen, setIsLoggedIn }) => {
     e.preventDefault();
 
     try {
+      
       const response = await fetch("http://localhost:8080/api/user/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),
       });
 
-      if (response.ok) {
-        const data = await response.json();
-        alert("Успешный вход!");
-        localStorage.setItem("token", data.token); // Сохраняем токен
+     if (response.ok) {
+  const data = await response.json();
+  console.log("Ответ сервера:", data);
+console.log("Роль с сервера:", data.role);
+ 
+  alert("Успешный вход!");
 
-        if (typeof setIsLoggedIn === "function") {
-          setIsLoggedIn(true);
-        } else {
-          console.error("setIsLoggedIn не передано!");
-        }
+  localStorage.setItem("token", data.token); 
+  localStorage.setItem("role", data.role);  
+console.log("Роль в localStorage:", localStorage.getItem("role"));
+  setIsLoggedIn(true);
+  
+  if (typeof setRole === "function") {
+    setRole(data.role);
+  } else {
+    console.error("setRole не передано!");
+  }
 
-        setIsOpen(false);
-      } else if (response.status === 404) {
+  setIsOpen(false);
+}
+else if (response.status === 404) {
         setErrorMessage("Пользователь не найден");
       } else if (response.status === 401) {
         setErrorMessage("Неверный пароль");
@@ -72,9 +81,15 @@ const AdminLogin = ({ setIsOpen, setIsLoggedIn }) => {
 
           <button type="submit" className="btn">Войти</button>
         </form>
+        
       </div>
+      
     </div>
+    
   );
+  
+  
 };
 
 export default AdminLogin;
+
