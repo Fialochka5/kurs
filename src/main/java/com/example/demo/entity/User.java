@@ -10,6 +10,7 @@ public class User {
     private String email;
     private String password;
     private String role;
+    private String token;
 
     // Геттеры и сеттеры
     public Long getId() {
@@ -36,10 +37,16 @@ public class User {
     public String getRole() {
         return role;
     }
-
     public void setRole(String  role) {
         this.role = role;
     }
+    public void setToken(String  token) {
+        this.token = token;
+    }
+    public String getToken() {
+        return token;
+    }
+
 
 
 
