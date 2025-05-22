@@ -7596,7 +7596,19 @@ input[type=range]::-ms-thumb {
 .sidenav li > a:hover {
   background-color: rgba(0, 0, 0, 0.05);
 }
+.sidenav li > span {
+  color: rgba(0, 0, 0, 0.87);
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  height: 48px;
+  line-height: 48px;
+  padding: 0 32px;
+}
 
+.sidenav li > span:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
 .sidenav li > a.btn, .sidenav li > a.btn-large, .sidenav li > a.btn-small, .sidenav li > a.btn-large, .sidenav li > a.btn-flat, .sidenav li > a.btn-floating {
   margin: 10px 15px;
 }
@@ -7620,6 +7632,16 @@ input[type=range]::-ms-thumb {
 .sidenav li > a > i,
 .sidenav li > a > [class^="mdi-"], .sidenav li > a li > a > [class*="mdi-"],
 .sidenav li > a > i.material-icons {
+  float: left;
+  height: 48px;
+  line-height: 48px;
+  margin: 0 32px 0 0;
+  width: 24px;
+  color: rgba(0, 0, 0, 0.54);
+}
+.sidenav li > span > i,
+.sidenav li > span > [class^="mdi-"], .sidenav li > span li > span > [class*="mdi-"],
+.sidenav li > span > i.material-icons {
   float: left;
   height: 48px;
   line-height: 48px;
@@ -7729,6 +7751,9 @@ input[type=range]::-ms-thumb {
             transform: translateX(105%);
   }
   .sidenav > a {
+    padding: 0 16px;
+  }
+  .sidenav > span {
     padding: 0 16px;
   }
   .sidenav .user-view {

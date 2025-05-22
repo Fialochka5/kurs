@@ -38,7 +38,7 @@ const AdminLogin = ({ setIsOpen }) => {
         }}
       >
         <span className="close-btn" onClick={() => setIsOpen(false)}>&times;</span>
-        <h2>Вход администратора</h2>
+        <h2>Вход</h2>
 
         <form className="admin-form">
           <div className="input-field">

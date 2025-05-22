@@ -34,7 +34,7 @@ const Navbar = () => {
               <Link to="/contacts">Контакты</Link>
             </li>
             <li className="padding">
-              <span className="clickable" onClick={() => setIsOpen(true)}>Вход</span>
+              <Link className="clickable" onClick={() => setIsOpen(true)}>Вход</Link>
             </li>
           </ul>
         </div>
@@ -61,9 +61,10 @@ const Navbar = () => {
           <Link to="/contacts"><i className="material-icons">call_end</i>Контакты</Link>
         </li>
         <li>
-          <span className="clickable" onClick={() => setIsOpen(true)}>
+          <Link className="clickable" onClick={() => setIsOpen(true)}>
             <i className="material-icons">lock_open</i> Вход
-          </span>
+          </Link>
+       
         </li>
         <li><div className="divider"></div></li>
         <li>

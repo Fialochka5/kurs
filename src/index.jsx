@@ -12,6 +12,7 @@ import "./style/AdminLogin.css";
 import "./style/Gallery.css";
 import "./style/main.css";
 import "./style/About.css";
+import "./style/AddRent.css";
 import "./style/Rent.css";
 import "./style/DetailedRental.css";
 import "./style/Connection.css";
