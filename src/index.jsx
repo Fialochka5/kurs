@@ -14,6 +14,7 @@ import "./style/main.css";
 import "./style/About.css";
 import "./style/AddRent.css";
 import "./style/Rent.css";
+import "./style/admin.css";
 import "./style/DetailedRental.css";
 import "./style/Connection.css";
 import "./style/media.css";

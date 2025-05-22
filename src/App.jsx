@@ -5,6 +5,8 @@ import About from "./components/About";
 import Connection from "./components/Connection";
 import FirstGroup from "./components/FirstGroup";
 import SecondGroup from "./components/SecondGroop";
+import AdminPanel from "./Panel/AdminPanel";
+import UserCabinet from "./Panel/UserCabinet";
 import DetailedRental from "./components/DetailedRental";
 import Footer from "./components/Footer";
 import Rental from "./components/Rent";
@@ -55,12 +57,26 @@ const Contact = () => (
     <Footer/> 
   </div>
 );
-
+const Admin = () => (
+  <div>
+    <Navbar />
+   <AdminPanel/>
+    <Footer/> 
+  </div>
+);const User = () => (
+  <div>
+    <Navbar />
+    <UserCabinet />
+    <Footer/> 
+  </div>
+);
 const App = () => {
   return (
     <Router>
       <Routes>
         <Route path="/" element={<HomePage />} />
+        <Route path="/admin" element={<Admin />} />
+        <Route path="/cabinet" element={<User />} />
         <Route path="/rent" element={<Rent />} />  
         <Route path="/rental/:id" element={<Detail />} />
         <Route path="/gallery" element={<GalleryPage />} /> {/* Галерея - осмотр*/}

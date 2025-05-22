@@ -6,7 +6,7 @@ const UserCabinet = () => {
   useEffect(() => {
     const fetchRentals = async () => {
       try {
-        const response = await fetch("http://localhost:8080/api/rentals");
+        const response = await fetch("http://localhost:8080/api/rental");
         const data = await response.json();
         setRentals(data);
       } catch (error) {
@@ -30,7 +30,7 @@ const UserCabinet = () => {
 
           return (
             <li key={rental.id}>
-              {rental.item} — {daysLeft > 0 ? `Осталось ${daysLeft} дней` : "Срок аренды истек"}
+              {rental.title} — {daysLeft > 0 ? `Осталось ${daysLeft} дней` : "Срок аренды истек"}
             </li>
           );
         })}
@@ -40,3 +40,4 @@ const UserCabinet = () => {
 };
 
 export default UserCabinet;
+

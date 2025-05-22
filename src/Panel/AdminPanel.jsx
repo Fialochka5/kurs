@@ -2,12 +2,12 @@ import React, { useState, useEffect } from "react";
 
 const AdminPanel = () => {
   const [users, setUsers] = useState([]);
-  const [newUser, setNewUser] = useState({ email: "", role: "user" });
+  const [newUser, setNewUser] = useState({ email: "", password: "", role: "user" });
 
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const response = await fetch("http://localhost:8080/api/users");
+        const response = await fetch("http://localhost:8080/api/user");
         const data = await response.json();
         setUsers(data);
       } catch (error) {
@@ -19,27 +19,35 @@ const AdminPanel = () => {
   }, []);
 
   const handleAddUser = async () => {
-    try {
-      const response = await fetch("http://localhost:8080/api/users/add", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(newUser),
-      });
+  // Проверяем, существует ли email в списке пользователей
+  const emailExists = users.some(user => user.email === newUser.email);
+  
+  if (emailExists) {
+    alert("Ошибка: пользователь с таким email уже существует!");
+    return;
+  }
 
-      if (response.ok) {
-        alert("Пользователь добавлен!");
-        setNewUser({ email: "", role: "user" });
-        setUsers([...users, newUser]); // Обновление списка
-      } else {
-        console.error("Ошибка добавления пользователя");
-      }
-    } catch (error) {
-      console.error("Ошибка запроса:", error);
+  try {
+    const response = await fetch("http://localhost:8080/api/user/add", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(newUser),
+    });
+
+    if (response.ok) {
+      alert("Пользователь добавлен!");
+      setNewUser({ email: "", password: "", role: "user" });
+      setUsers([...users, newUser]); // Обновление списка
+    } else {
+      console.error("Ошибка добавления пользователя");
     }
-  };
+  } catch (error) {
+    console.error("Ошибка запроса:", error);
+  }
+};
 
   return (
-    <div>
+    <div className="admin-panel">
       <h2>Админ-панель</h2>
       <h3>Список пользователей:</h3>
       <ul>
@@ -49,17 +57,22 @@ const AdminPanel = () => {
       </ul>
 
       <h3>Добавить нового пользователя</h3>
-      <input
-        type="text"
-        placeholder="Email"
-        value={newUser.email}
-        onChange={(e) => setNewUser({ ...newUser, email: e.target.value })}
-      />
-      <select onChange={(e) => setNewUser({ ...newUser, role: e.target.value })}>
-        <option value="user">User</option>
-        <option value="admin">Admin</option>
-      </select>
-      <button onClick={handleAddUser}>Добавить пользователя</button>
+      <div className="user-form">
+        <input
+          type="text"
+          placeholder="Email"
+          value={newUser.email}
+          onChange={(e) => setNewUser({ ...newUser, email: e.target.value })}
+        />
+        <input
+          type="password"
+          placeholder="Пароль"
+          value={newUser.password}
+          onChange={(e) => setNewUser({ ...newUser, password: e.target.value })}
+        />
+       
+        <button onClick={handleAddUser}>Добавить пользователя</button>
+      </div>
     </div>
   );
 };

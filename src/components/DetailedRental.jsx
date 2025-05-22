@@ -7,9 +7,10 @@ const DetailedRental = () => {
   const [offer, setOffer] = useState(null);
   const [editMode, setEditMode] = useState(false);
   const [editedOffer, setEditedOffer] = useState({});
-  const [role] = useState(localStorage.getItem("role") || "user"); // 🔥 Проверяем роль пользователя
+  const [role] = useState(localStorage.getItem("role") || "user"); 
+  const [rentaltime, setRentalTime] = useState("");
+  const [isRented, setIsRented] = useState(false);
 
-  // Загружаем данные с сервера
   useEffect(() => {
     const fetchOffer = async () => {
       try {
@@ -19,7 +20,7 @@ const DetailedRental = () => {
         }
         const data = await response.json();
         setOffer(data);
-        setEditedOffer(data); // Сохраняем копию для редактирования
+        setEditedOffer(data);
       } catch (error) {
         console.error("Ошибка загрузки данных:", error);
       }
@@ -28,7 +29,30 @@ const DetailedRental = () => {
     fetchOffer();
   }, [id]);
 
-  // Функция удаления
+  const handleRent = async () => {
+    if (!rentaltime) {
+      alert("Выберите срок аренды!");
+      return;
+    }
+
+    try {
+      const response = await fetch("http://localhost:8080/api/rental/rent", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ rentalId: id, expirationDate: rentaltime }),
+      });
+
+      if (response.ok) {
+        alert("Аренда оформлена!");
+        setIsRented(true);
+      } else {
+        console.error("Ошибка аренды");
+      }
+    } catch (error) {
+      console.error("Ошибка запроса:", error);
+    }
+  };
+
   const handleDeleteOffer = async () => {
     try {
       const response = await fetch(`http://localhost:8080/api/rental/delete/${id}`, {
@@ -46,7 +70,6 @@ const DetailedRental = () => {
     }
   };
 
-  // Функция сохранения изменений
   const handleSaveChanges = async () => {
     try {
       const response = await fetch(`http://localhost:8080/api/rental/update/${id}`, {
@@ -97,10 +120,19 @@ const DetailedRental = () => {
               <p>Нет видео</p>
             )}
           </div>
+
+          {role === "user" && (
+            <>
+              <label>Выберите срок аренды:</label>
+              <input type="date" value={rentaltime} onChange={(e) => setRentalTime(e.target.value)} />
+              <button onClick={handleRent} disabled={isRented}>
+                {isRented ? "Арендовано" : "Арендовать"}
+              </button>
+            </>
+          )}
         </>
       )}
 
-      {/* 🔥 Кнопки управления доступны **только** для админа */}
       {role === "admin" && (
         <>
           <button onClick={() => setEditMode(!editMode)}>{editMode ? "Отменить" : "Редактировать"}</button>
@@ -113,3 +145,4 @@ const DetailedRental = () => {
 };
 
 export default DetailedRental;
+
