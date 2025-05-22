@@ -18,4 +18,5 @@ public class UserController {
         String result = userService.authenticateUser(request.getEmail(), request.getPassword());
         return ResponseEntity.ok(result);
     }
+
 }
