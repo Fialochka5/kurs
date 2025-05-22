@@ -1,6 +1,87 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 const OfficeMatrix = () => {
+  const [media, setMedia] = useState([]);
+  const [newImage, setNewImage] = useState("");
+  const [newVideo, setNewVideo] = useState("");
+
+  // Загружаем медиафайлы с сервера
+  useEffect(() => {
+    const fetchMedia = async () => {
+      try {
+        const response = await fetch("http://localhost:8080/api/gallery");
+        const data = await response.json();
+        setMedia(data);
+      } catch (error) {
+        console.error("Ошибка загрузки медиафайлов:", error);
+      }
+    };
+
+    fetchMedia();
+  }, []);
+
+  // Функция добавления изображения
+  const handleAddImage = async () => {
+    try {
+      const response = await fetch("http://localhost:8080/api/gallery/add", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ img: newImage }),
+      });
+
+      if (response.ok) {
+        alert("Изображение добавлено!");
+        setNewImage("");
+        const updatedMedia = await fetch("http://localhost:8080/api/gallery");
+        setMedia(await updatedMedia.json());
+      } else {
+        console.error("Ошибка добавления изображения");
+      }
+    } catch (error) {
+      console.error("Ошибка запроса:", error);
+    }
+  };
+
+  // Функция добавления видео
+  const handleAddVideo = async () => {
+    try {
+      const response = await fetch("http://localhost:8080/api/gallery/add", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ video: newVideo }),
+      });
+
+      if (response.ok) {
+        alert("Видео добавлено!");
+        setNewVideo("");
+        const updatedMedia = await fetch("http://localhost:8080/api/gallery");
+        setMedia(await updatedMedia.json());
+      } else {
+        console.error("Ошибка добавления видео");
+      }
+    } catch (error) {
+      console.error("Ошибка запроса:", error);
+    }
+  };
+
+  // Функция удаления медиафайла
+  const handleDeleteMedia = async (id) => {
+    try {
+      const response = await fetch(`http://localhost:8080/api/gallery/delete/${id}`, {
+        method: "DELETE",
+      });
+
+      if (response.ok) {
+        alert("Медиафайл удалён!");
+        setMedia((prevMedia) => prevMedia.filter((item) => item.id !== id));
+      } else {
+        console.error("Ошибка удаления");
+      }
+    } catch (error) {
+      console.error("Ошибка запроса:", error);
+    }
+  };
+
   return (
     <div>
       {/* Офисы */}
@@ -10,36 +91,44 @@ const OfficeMatrix = () => {
 
       {/* Матрица из фото и видео */}
       <div className="matrix">
-        <img src="images/matrix1.webp" alt="" />
-        <img src="images/matrix2.webp" alt="" />
-        <img src="images/matrix3.webp" alt="" />
-        <img src="images/matrix4.webp" alt="" />
-        <img src="images/matrix5.webp" alt="" />
-        <img src="images/matrix6.webp" alt="" />
-        <video
-          src="https://cdn.pixabay.com/video/2015/10/16/1046-142621379_large.mp4"
-          width="100%"
-          height="100%"
-          controls
-          className="video-1"
-        ></video>
-        <video
-          src="https://cdn.pixabay.com/video/2015/10/16/1046-142621379_large.mp4"
-          width="100%"
-          height="100%"
-          controls
-          className="video-2"
-        ></video>
-        <video
-          src="https://cdn.pixabay.com/video/2015/10/16/1046-142621379_large.mp4"
-          width="100%"
-          height="100%"
-          controls
-          className="video-3"
-        ></video>
+        {media.map((item) => (
+          <div key={item.id} className="media-item">
+            {item.video ? (
+              <video width="100%" height="100%" controls>
+                <source src={item.video} type="video/mp4" />
+              </video>
+            ) : item.img ? (
+              <img src={item.img} alt="Медиафайл" />
+            ) : (
+              <p>Нет медиафайла</p>
+            )}
+            <button className="delete-btn" onClick={() => handleDeleteMedia(item.id)}>🗑 Удалить</button>
+          </div>
+        ))}
+      </div>
+
+      {/* Форма добавления нового медиафайла */}
+      <div className="add-media-container">
+        <input
+          type="text"
+          placeholder="Ссылка на изображение"
+          value={newImage}
+          onChange={(e) => setNewImage(e.target.value)}
+        />
+        <button onClick={handleAddImage}>Добавить изображение</button>
+
+        <input
+          type="text"
+          placeholder="Ссылка на видео"
+          value={newVideo}
+          onChange={(e) => setNewVideo(e.target.value)}
+        />
+        <button onClick={handleAddVideo}>Добавить видео</button>
       </div>
     </div>
   );
 };
 
 export default OfficeMatrix;
+
+

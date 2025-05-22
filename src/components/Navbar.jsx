@@ -8,7 +8,11 @@ const Navbar = () => {
     M.Sidenav.init(document.querySelectorAll(".sidenav"));
   }, []);
 
+  // Управление состояниями
   const [isOpen, setIsOpen] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false); // Добавляем
+
+  console.log("Состояние модального окна:", isOpen);
 
   return (
     <>
@@ -33,9 +37,15 @@ const Navbar = () => {
             <li className="padding">
               <Link to="/contacts">Контакты</Link>
             </li>
-            <li className="padding">
-              <Link className="clickable" onClick={() => setIsOpen(true)}>Вход</Link>
-            </li>
+            {!isLoggedIn ? ( // Показываем "Вход", если не авторизован
+              <li className="padding">
+                <Link className="clickable" onClick={() => setIsOpen(true)}>Вход</Link>
+              </li>
+            ) : (
+              <li className="padding">
+                <Link className="clickable" onClick={() => setIsLoggedIn(false)}>Выход</Link>
+              </li>
+            )}
           </ul>
         </div>
         <div className="number">
@@ -60,12 +70,19 @@ const Navbar = () => {
         <li>
           <Link to="/contacts"><i className="material-icons">call_end</i>Контакты</Link>
         </li>
-        <li>
-          <Link className="clickable" onClick={() => setIsOpen(true)}>
-            <i className="material-icons">lock_open</i> Вход
-          </Link>
-       
-        </li>
+        {!isLoggedIn ? ( // Условный рендеринг
+          <li>
+            <Link className="clickable" onClick={() => setIsOpen(true)}>
+              <i className="material-icons">lock_open</i> Вход
+            </Link>
+          </li>
+        ) : (
+          <li>
+            <Link className="clickable" onClick={() => setIsLoggedIn(false)}>
+              <i className="material-icons">logout</i> Выход
+            </Link>
+          </li>
+        )}
         <li><div className="divider"></div></li>
         <li>
           <a href="#!" className="sidenav-close">
@@ -75,11 +92,12 @@ const Navbar = () => {
       </ul>
 
       {/* Модальное окно входа */}
-      {isOpen && <AdminLogin setIsOpen={setIsOpen} />}
+      {isOpen && <AdminLogin setIsOpen={setIsOpen} setIsLoggedIn={setIsLoggedIn} />}  
     </>
   );
 };
 
 export default Navbar;
+
 
 

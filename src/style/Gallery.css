@@ -23,6 +23,11 @@
     margin-bottom: 10px;
 }
 
-.matrix img {
-    height: 100%;
+.matrix img, .matrix video {
+    height: 200px; /* Можешь изменить на любое значение */
+    object-fit: cover; /* Обрезает, чтобы сохранить пропорции */
+    width: 100%; /* Чтобы изображения заполняли блок */
+}
+.add-media-container button{
+    margin-bottom: 10px;
 }

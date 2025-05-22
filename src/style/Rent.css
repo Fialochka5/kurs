@@ -1,3 +1,7 @@
+
+.modals-content button{
+  margin-left: 10px;
+}
 /* Заголовок */
 .rental-header h2 {
   text-align: center;
@@ -78,7 +82,7 @@
     margin-bottom: 10%;
   }
 
-  .rental-header p {
+  .rental-header h2 {
     font-size: 4.5vw;
   }
 

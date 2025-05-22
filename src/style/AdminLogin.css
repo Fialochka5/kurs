@@ -1,41 +1,25 @@
-/* Основное модальное окно */
 .modal-overlays {
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
   position: fixed;
-  z-index: 9999;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  opacity: 0;
-  transition: opacity 0.4s ease-in-out;
-  pointer-events: none; /* Запрещаем взаимодействие, пока не покажется */
-}
-
-.modal-overlays.show {
+  background: rgba(0, 0, 0, 0.5); /* Затемнение фона */
   opacity: 1;
-  pointer-events: all; /* Включаем после появления */
+  visibility: visible;
+    z-index: 9999;
 }
-
-/* Контент модального окна */
 .modal-contents {
   background: white;
   padding: 20px;
-  width: 50%;
-  max-width: 600px;
   border-radius: 10px;
-  position: fixed; /* Фиксируем */
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%); /* Центрируем */
-  text-align: center;
-  transition: opacity 0.4s ease-out;
-  opacity: 0;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
   z-index: 9999;
 }
+
 
 .modal-contents.slide-up {
   opacity: 1;

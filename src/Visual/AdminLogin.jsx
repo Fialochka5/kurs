@@ -1,54 +1,75 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
-const AdminLogin = ({ setIsOpen }) => {
-  const [isVisible, setIsVisible] = useState(false);
-  const [modalPosition, setModalPosition] = useState({ top: 0, left: 0 });
-   const [modalTop, setModalTop] = useState(0);
+const AdminLogin = ({ setIsOpen, setIsLoggedIn }) => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
 
-  useEffect(() => {
-    // Получаем текущее положение курсора
-    const handleMouseMove = (event) => {
-      setModalPosition({
-        top: event.clientY + window.scrollY,
-        left: event.clientX,
+  const handleLogin = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await fetch("http://localhost:8080/api/user/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password }),
       });
-    };
 
-    document.addEventListener("mousemove", handleMouseMove);
-    const viewportHeight = window.innerHeight;
-    const scrollY = window.scrollY;
-    setModalTop(scrollY + viewportHeight / 1.5 );
-    setTimeout(() => setIsVisible(true), 50); // Плавное появление
-    document.body.classList.add("modal-open"); // 🔹 Запрещаем прокрутку
+      if (response.ok) {
+        const data = await response.json();
+        alert("Успешный вход!");
+        localStorage.setItem("token", data.token); // Сохраняем токен
 
-    return () => {
-      document.removeEventListener("mousemove", handleMouseMove);
-      document.body.classList.remove("modal-open"); // 🔹 Возвращаем прокрутку
-    };
-  }, []);
+        if (typeof setIsLoggedIn === "function") {
+          setIsLoggedIn(true);
+        } else {
+          console.error("setIsLoggedIn не передано!");
+        }
+
+        setIsOpen(false);
+      } else if (response.status === 404) {
+        setErrorMessage("Пользователь не найден");
+      } else if (response.status === 401) {
+        setErrorMessage("Неверный пароль");
+      }
+    } catch (error) {
+      console.error("Ошибка запроса:", error);
+      setErrorMessage("Ошибка соединения с сервером.");
+    }
+  };
+
+  console.log("Состояние модального окна:", setIsOpen);
 
   return (
-    <div className={`modal-overlays ${isVisible ? "show" : ""}`}>
-      <div 
-        className={`modal-contents ${isVisible ? "slide-up" : ""}`} 
-        style={{ 
-          top: `${modalTop.top}px`,
-          left: `${modalPosition.left}px`,
-          transform: "translate(-40%, -50%)"
-        }}
-      >
+    <div className="modal-overlays">
+      <div className="modal-contents">
         <span className="close-btn" onClick={() => setIsOpen(false)}>&times;</span>
         <h2>Вход</h2>
 
-        <form className="admin-form">
+        <form className="admin-form" onSubmit={handleLogin}>
           <div className="input-field">
-            <input type="text" name="email" required />
+            <input
+              type="text"
+              name="email"
+              required
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
             <label htmlFor="email">Email</label>
           </div>
           <div className="input-field">
-            <input type="password" name="password" required />
+            <input
+              type="password"
+              name="password"
+              required
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
             <label htmlFor="password">Пароль</label>
           </div>
+
+          {errorMessage && <p className="error-message">{errorMessage}</p>}
+
           <button type="submit" className="btn">Войти</button>
         </form>
       </div>
@@ -57,5 +78,3 @@ const AdminLogin = ({ setIsOpen }) => {
 };
 
 export default AdminLogin;
-
-

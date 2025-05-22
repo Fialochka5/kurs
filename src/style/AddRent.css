@@ -47,6 +47,7 @@
   border-radius: 5px;
   cursor: pointer;
   margin-left: 10px;
+  margin-bottom: 30px;
 }
 
 .delete-btn:hover {
