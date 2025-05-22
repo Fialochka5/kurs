@@ -5,6 +5,7 @@ const Rental = () => {
   const [offers, setOffers] = useState([]);
   const [newOffer, setNewOffer] = useState({ title: "", area: "", price: "", img: "", video: "" });
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [role, setRole] = useState(localStorage.getItem("role") || "user");
 
   // Загружаем список предложений при загрузке страницы
   const fetchOffers = async () => {
@@ -19,6 +20,7 @@ const Rental = () => {
   };
 
   useEffect(() => {
+    setRole(localStorage.getItem("role") || "user");
     fetchOffers(); // Загружаем список при запуске
   }, []);
 
@@ -79,7 +81,10 @@ const handleDeleteOffer = async (id) => {
               <Link to={`/rental/${offer.id}`} >
                 <i className="material-icons">info</i> Подробнее
               </Link>
-              <button className="delete-btn" onClick={() => handleDeleteOffer(offer.id)}>🗑 Удалить</button>
+              {role === "admin" && (
+  <button className="delete-btn" onClick={() => handleDeleteOffer(offer.id)}>🗑 Удалить</button>
+)}
+
             </div>
            
           </div>
@@ -87,12 +92,15 @@ const handleDeleteOffer = async (id) => {
       </div>
 
       {/* Крупная кнопка с плюсом */}
-      <div className="add-offer-container">
-        <button className="add-offer-btn" onClick={() => setIsModalOpen(true)}>
-          ➕ Добавить предложение
-        </button>
-      </div>
+        {role === "admin" && (
+  <div className="add-offer-container">
+    <button className="add-offer-btn" onClick={() => setIsModalOpen(true)}>
+      ➕ Добавить предложение
+    </button>
+  </div>
+)}
 
+ 
       {/* Модальное окно */}
       {isModalOpen && (
         <div className="modals">

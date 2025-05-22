@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import M from "materialize-css";
 import AdminLogin from "../Visual/AdminLogin";
 
@@ -16,11 +16,14 @@ const Navbar = () => {
   }, [isLoggedIn]);
 
   // Функция выхода
+  const navigate = useNavigate();
   const handleLogout = () => {
+    
     localStorage.removeItem("token");
     localStorage.removeItem("role");
 
     setIsLoggedIn(false);
+    navigate(0);
     setRole("user"); // Обновляем React состояние
     console.log("Роль после выхода:", localStorage.getItem("role")); // Проверяем удаление
   };
@@ -50,11 +53,15 @@ const Navbar = () => {
               </li>
             ) : (
               <>
-                {role === "admin" && (
-                  <li className="padding">
-                    <Link to="/admin">Админ-панель</Link>
-                  </li>
-                )}
+               {role === "admin" ? (
+  <li className="padding">
+    <Link to="/admin">Админ-панель</Link>
+  </li>
+) : (
+  <li className="padding">
+    <Link to="/cabinet">Кабинет</Link>
+  </li>
+)}
                 <li className="padding">
                   <Link className="clickable" onClick={handleLogout}>Выход</Link>
                 </li>
@@ -77,26 +84,27 @@ const Navbar = () => {
         <li><Link to="/rent"><i className="material-icons">payment</i>Аренда</Link></li>
         <li><Link to="/contacts"><i className="material-icons">call_end</i>Контакты</Link></li>
 
-        {!isLoggedIn ? (
-          <li>
-            <Link className="clickable" onClick={() => setIsOpen(true)}>
-              <i className="material-icons">lock_open</i> Вход
-            </Link>
-          </li>
-        ) : (
-          <>
-            {role === "admin" && (
-              <li>
-                <Link to="/admin"><i className="material-icons">admin_panel_settings</i> Админ-панель</Link>
-              </li>
-            )}
-            <li>
-              <Link className="clickable" onClick={handleLogout}>
-                <i className="material-icons">logout</i> Выход
-              </Link>
-            </li>
-          </>
-        )}
+        {isLoggedIn ? (
+  <>
+    {role === "admin" ? (
+      <li className="padding">
+        <Link to="/admin">Админ-панель</Link>
+      </li>
+    ) : (
+      <li className="padding">
+        <Link to="/cabinet">Кабинет</Link>
+      </li>
+    )}
+    <li className="padding">
+      <Link className="clickable" onClick={handleLogout}>Выход</Link>
+    </li>
+  </>
+) : (
+  <li className="padding">
+    <Link className="clickable" onClick={() => setIsOpen(true)}>Вход</Link>
+  </li>
+)}
+
 
         <li><div className="divider"></div></li>
         <li>

@@ -7,6 +7,7 @@ const DetailedRental = () => {
   const [offer, setOffer] = useState(null);
   const [editMode, setEditMode] = useState(false);
   const [editedOffer, setEditedOffer] = useState({});
+  const [role] = useState(localStorage.getItem("role") || "user"); // 🔥 Проверяем роль пользователя
 
   // Загружаем данные с сервера
   useEffect(() => {
@@ -99,10 +100,14 @@ const DetailedRental = () => {
         </>
       )}
 
-      {/* Кнопки управления */}
-      <button onClick={() => setEditMode(!editMode)}>{editMode ? "Отменить" : "Редактировать"}</button>
-      {editMode && <button onClick={handleSaveChanges}>Сохранить</button>}
-      <button className="delete-btn" onClick={handleDeleteOffer}>🗑 Удалить</button>
+      {/* 🔥 Кнопки управления доступны **только** для админа */}
+      {role === "admin" && (
+        <>
+          <button onClick={() => setEditMode(!editMode)}>{editMode ? "Отменить" : "Редактировать"}</button>
+          {editMode && <button onClick={handleSaveChanges}>Сохранить</button>}
+          <button className="delete-btn" onClick={handleDeleteOffer}>🗑 Удалить</button>
+        </>
+      )}
     </div>
   );
 };

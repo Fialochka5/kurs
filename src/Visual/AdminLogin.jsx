@@ -35,6 +35,7 @@ console.log("Роль в localStorage:", localStorage.getItem("role"));
   }
 
   setIsOpen(false);
+     window.location.reload();
 }
 else if (response.status === 404) {
         setErrorMessage("Пользователь не найден");
