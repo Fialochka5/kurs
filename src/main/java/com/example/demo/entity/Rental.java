@@ -1,7 +1,7 @@
 package com.example.demo.entity;
 
 import jakarta.persistence.*;
-
+import java.time.LocalDateTime;
 @Entity
 @Table(name = "rental")
 public class Rental {
@@ -61,6 +61,15 @@ public class Rental {
 
     public void setVideo(String video) {
         this.video = video;
+    }
+    private LocalDateTime rentalTime;
+
+    public LocalDateTime getRentalTime() {
+        return rentalTime;
+    }
+
+    public void setRentalTime(LocalDateTime rentalTime) {
+        this.rentalTime = rentalTime;
     }
 }
 

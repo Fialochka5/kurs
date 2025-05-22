@@ -1,13 +1,14 @@
 package com.example.demo.controllers;
 import com.example.demo.entity.Rental;
 import com.example.demo.repository.RentalRepository;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
-
+import org.springframework.web.bind.annotation.CrossOrigin;
 import java.util.List;
-
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("/api/rental")
 public class RentalController {
@@ -34,6 +35,15 @@ public class RentalController {
         rentalRepository.deleteById(id);
         return ResponseEntity.ok("Предложение удалено");
     }
+
+
+    @PostMapping("/rent")
+    public ResponseEntity<String> rentItem(@RequestBody Rental rental) {
+        System.out.println("Запрос на аренду: " + rental.getId());
+        return ResponseEntity.ok("Аренда подтверждена!");
+    }
+
+
     @GetMapping("/{id}")
     public ResponseEntity<Rental> getOffer(@PathVariable Long id) {
         return rentalRepository.findById(id)
