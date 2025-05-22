@@ -105,7 +105,6 @@ const Navbar = () => {
   </li>
 )}
 
-
         <li><div className="divider"></div></li>
         <li>
           <a href="#!" className="sidenav-close">
