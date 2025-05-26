@@ -7,20 +7,24 @@ const DetailedRental = () => {
   const [offer, setOffer] = useState(null);
   const [editMode, setEditMode] = useState(false);
   const [editedOffer, setEditedOffer] = useState({});
-  const [role] = useState(localStorage.getItem("role") || "user"); 
-  const [rentaltime, setRentalTime] = useState("");
+  const role = localStorage.getItem("role") || "user"; // Убрали useState
+  const [rental_time, setRentalTime] = useState("");
   const [isRented, setIsRented] = useState(false);
 
   useEffect(() => {
+    setOffer(null); // Сбрасываем данные перед загрузкой
     const fetchOffer = async () => {
       try {
         const response = await fetch(`http://localhost:8080/api/rental/${id}`);
-        if (!response.ok) {
-          throw new Error(`Ошибка: ${response.status}`);
-        }
+        if (!response.ok) throw new Error(`Ошибка: ${response.status}`);
+
         const data = await response.json();
         setOffer(data);
         setEditedOffer(data);
+
+        if (data.rental_time && !isNaN(Date.parse(data.rental_time)) && new Date(data.rental_time) > new Date()) {
+          setIsRented(true);
+        }
       } catch (error) {
         console.error("Ошибка загрузки данных:", error);
       }
@@ -30,28 +34,32 @@ const DetailedRental = () => {
   }, [id]);
 
   const handleRent = async () => {
-    if (!rentaltime) {
-      alert("Выберите срок аренды!");
-      return;
-    }
+  if (!rental_time) {
+    alert("Выберите срок аренды!");
+    return;
+  }
 
-    try {
-      const response = await fetch("http://localhost:8080/api/rental/rent", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ rentalId: id, expirationDate: rentaltime }),
-      });
+  const userId = localStorage.getItem("userId"); // Получаем userId пользователя
 
-      if (response.ok) {
-        alert("Аренда оформлена!");
-        setIsRented(true);
-      } else {
-        console.error("Ошибка аренды");
-      }
-    } catch (error) {
-      console.error("Ошибка запроса:", error);
+  try {
+    const response = await fetch("http://localhost:8080/api/rental/rent", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ rentalId: id, rental_time, userId }), // Передаем userId
+    });
+
+    if (response.ok) {
+      alert("Аренда оформлена!");
+      setIsRented(true);
+      setOffer((prev) => ({ ...prev, rental_time, rented_by: userId })); // Добавляем rentedBy
+      setEditedOffer((prev) => ({ ...prev, rental_time, rented_by: userId }));
+    } else {
+      alert("Ошибка аренды, попробуйте позже.");
     }
-  };
+  } catch (error) {
+    console.error("Ошибка запроса:", error);
+  }
+};
 
   const handleDeleteOffer = async () => {
     try {
@@ -63,7 +71,7 @@ const DetailedRental = () => {
         alert("Предложение удалено!");
         navigate("/rental");
       } else {
-        console.error("Ошибка удаления");
+        alert("Ошибка удаления предложения.");
       }
     } catch (error) {
       console.error("Ошибка запроса:", error);
@@ -83,7 +91,7 @@ const DetailedRental = () => {
         setOffer(editedOffer);
         setEditMode(false);
       } else {
-        console.error("Ошибка обновления данных");
+        alert("Ошибка сохранения изменений.");
       }
     } catch (error) {
       console.error("Ошибка запроса:", error);
@@ -124,7 +132,7 @@ const DetailedRental = () => {
           {role === "user" && (
             <>
               <label>Выберите срок аренды:</label>
-              <input type="date" value={rentaltime} onChange={(e) => setRentalTime(e.target.value)} />
+              <input type="date" value={rental_time} onChange={(e) => setRentalTime(e.target.value)} />
               <button onClick={handleRent} disabled={isRented}>
                 {isRented ? "Арендовано" : "Арендовать"}
               </button>
@@ -145,4 +153,5 @@ const DetailedRental = () => {
 };
 
 export default DetailedRental;
+
 
