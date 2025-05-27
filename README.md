@@ -67,7 +67,7 @@ spring.jpa.show-sql: true
 ```
 ### 4. Установить зависимости в pom.xml
 ```
-<dependency>
+		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-thymeleaf</artifactId>
 		</dependency>
@@ -118,14 +118,23 @@ spring.jpa.show-sql: true
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-test</artifactId>
 			<scope>test</scope>
-		</dependency>```
-
+		</dependency>
+```
 ## Запуск ▶️
 
 Запуск реализован с помощью одной команды: 
 ```npm run start-all```
+```
+  "scripts": {
+    "start-all": "concurrently \"cd ~/sem2/testkurs/demo && mvn spring-boot:run\" \"npm start\"",
+    "build": "react-scripts build",
+    "start": "react-scripts start",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  }
+```
 Реализованно при помощи изменения scripts в файле package.json
 
 ## Автор ✍️
 
-Абрамчук Виталий (студент 2 курса БрГТУ): [@abramchuk-vitalik](https://github.com/AbramchukVitalik)
+Шибун Дмитрий (студент 2 курса БрГТУ): (https://github.com/Fialochka5)
