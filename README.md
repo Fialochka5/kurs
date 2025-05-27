@@ -30,8 +30,7 @@
 
 ### Базы данных:
 
-- SQLite3
-- RethinkDB
+- MariaDB
 
 ### Аутентификация:
 
@@ -39,66 +38,93 @@
 
 ## Установка 🔧
 
-### 1. Клонирование репозитория 📥
-
-```bash
+### 1. Клонирование репозитория 
+```
 git clone https://github.com/Fialochka5/kurs.git
 ```
-
-### 2. Установить зависимости 📦
+### 2. Установить зависимости 
 
 Backend:
-
 ```
-cd backend
-npm install
+mvn clean install
+mvn spring-boot:run
 ```
-
 Frontend:
-
 ```
-cd ./frontend/my-app
 npm install
 ```
-
-### 3. Отредактировать .env файл ⚙️
-
-backend/
-
+### 3. Отредактировать application.properties файл ⚙️
 ```
-DATABASE_URL=your_database_url
-SECRET_KEY=your_secret_key
+spring.application.name=demo
+server.error.whitelabel.enabled=false
+
+spring.jpa.hibernate.ddl-auto=update
+spring.datasource.url=jdbc:mysql://localhost:3306/spring_back
+spring.datasource.username=fialochka5
+spring.datasource.password=2233
+spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+spring.jpa.show-sql: true
 ```
-
-### 4. Установить свои данные базы данных реального времени RethinkDB 🔌
-
-Откройте файл backend/src/prismaController/messagesController.js и измените следующие настройки
-
+### 4. Установить зависимости в pom.xml
 ```
-host: 'localhost',
-port: 28015,
-db: 'my_database',
-```
+<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-thymeleaf</artifactId>
+		</dependency>
 
----
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-api</artifactId>
+			<version>5.9.2</version> <!-- Проверь актуальную версию -->
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>8.0.33</version>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>jakarta.persistence</groupId>
+			<artifactId>jakarta.persistence-api</artifactId>
+			<version>3.1.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-engine</artifactId>
+			<version>5.9.2</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-test</artifactId>
+			<scope>test</scope>
+		</dependency>```
 
 ## Запуск ▶️
 
-backend
-
-```
-cd backend
-npm start
-```
-
-frontend
-
-```
-cd ./frontend/my-app
-npm start
-```
-
----
+Запуск реализован с помощью одной команды: 
+```npm run start-all```
+Реализованно при помощи изменения scripts в файле package.json
 
 ## Автор ✍️
 
