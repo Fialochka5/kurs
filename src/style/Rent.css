@@ -67,6 +67,35 @@
   transform: translateY(-10px) scale(1.03);
   box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.2);
 }
+/* Стили для блока фильтрации */
+.filter-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;              /* расстояние между полями */
+  padding: 0.75rem;          /* внутренние отступы */
+  background: #f5f7fa;       /* светлый фон для выделения */
+  border-radius: 6px;        /* скруглённые углы */
+  margin: 1rem;              /* отступы вокруг */
+}
+
+.filter-container input {
+  flex: 1 1 120px;           /* растягивается, но не уже 120px */
+  padding: 0.5rem;           /* внутренний отступ */
+  border: 1px solid #ccd0d5; /* нейтральная граница */
+  border-radius: 4px;        /* чуть скруглим */
+  transition: border-color .2s, box-shadow .2s;
+}
+
+.filter-container input::placeholder {
+  color: #888;               /* более мягкий цвет плейсхолдера */
+}
+
+.filter-container input:focus {
+  outline: none;
+  border-color: #4a90e2;     /* акцентный цвет */
+  box-shadow: 0 0 0 3px rgba(74,144,226,0.2);
+}
+
 /* Адаптивность */
 @media (max-width: 1024px) {
   .rental-container {
